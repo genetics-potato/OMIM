@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SMRUCC.Clinic.OMIM.API" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAAAAIAAAAEAAAQAgEBA=</HashCode>
+      <FileName>API.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.IQuery">
+    <Position X="4" Y="5.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAABEABCAiACAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIObject.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.dump" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAQAAAAAAAEAAIAAAAAACAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\dump.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.clinicalSynopsis.clinicalSynopsisData" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>C/cQK97YWaUE7HyEEkDDGUdz+QUPilzckPVHS04KN1M=</HashCode>
+      <FileName>Handlers\clinicalSynopsis\clinicalSynopsis.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.EntryQuery" Collapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAQBAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Handlers\entry\entry.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.EntryAllelicVariantData" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAQAAEAAAAAIABAAAFAgAIAAAAQQAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryAllelicVariantData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.EntryData" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBQAAEAQSQQAEAAAAADBAAABAEEAAgSCAAAAAQAAGAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.EntryReferenceData" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryReferenceData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.reference" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAEAIQQAAAAIEAAAAAAAAIAAAAAAAQACAAAAEAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryReferenceData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.rtvl" Collapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\geneMap\GeneMapData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.GeneMapData" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABBAgAACAQAAACAA=</HashCode>
+      <FileName>Handlers\geneMap\GeneMapData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.geneMap" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAKAAQAAAAAAAABggAAAAQQADFACFACAAAAAABA=</HashCode>
+      <FileName>Handlers\geneMap\GeneMapData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.phenotypeMap" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABABAAACQAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\geneMap\GeneMapData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.searchArgument" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAkAAAAEAAAEAEAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Handlers\geneMap\searchArgument.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.search.searchResponse" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAIAAAEAAgAEQAgEAAAAAAgACSAQgAQAAI=</HashCode>
+      <FileName>Handlers\search\searchResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.My.MySettings" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.DataFiles.genemap" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIQAJAACAAEEAAARAAAAAIAAAAAEAAAAAAAAoAA=</HashCode>
+      <FileName>DataFiles\genemap.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.DataFiles.genemap2" Collapsed="true">
+    <Position X="19" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABAAIAAIAACAAEEAAABAAEEAAQAAAAAAAIAAEAAIAA=</HashCode>
+      <FileName>DataFiles\genemap2.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.DataFiles.mim2gene" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEEAAAAAAAAAAQgAAAAAAIAAAgAAAA=</HashCode>
+      <FileName>DataFiles\mim2gene.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.DataFiles.mimTitles" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAABAAAAAAEEAAAAAgACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataFiles\mimTitles.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.DataFiles.morbidmap" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAEEAAABAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>DataFiles\morbidmap.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.clinicalSynopsis.oldFormat" Collapsed="true">
+    <Position X="19" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAACAAAQAAAAAACAAAA=</HashCode>
+      <FileName>Handlers\clinicalSynopsis\clinicalSynopsis.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.clinicalSynopsis.clinicalSynopsisQuery" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAQBAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\clinicalSynopsis\Query.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.externalLinks" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UACBkAAAwAgGBBAECgBABE4EAAoACCIAAAIQYEFQAhA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.allelicVariant" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAQAAAAAAAAIABAAAEAAAIAAAAQQAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.textSection" Collapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAQAAAEAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.textSectionList" Collapsed="true">
+    <Position X="17.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.titles" Collapsed="true">
+    <Position X="19" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAABAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.referenceList" Collapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\EntryReferenceData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.phenotypeMapList" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\phenotypeMapList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.phenotypeMap" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABABAKACQAACAAAAABgAAAAAQQADBAQAAAAAAAAABA=</HashCode>
+      <FileName>Handlers\entry\rtvl\phenotypeMapList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.value" Collapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAEAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\value.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.entry.entryList" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Handlers\entry\rtvl\value.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.geneMapEntryQuery" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\geneMap\geneMap.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.geneMap.geneMapQuery" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAkAAAAAAAAAAEADAAAAAAAAAAAQBA=</HashCode>
+      <FileName>Handlers\geneMap\geneMap.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMRUCC.Clinic.OMIM.Handlers.search.searchQuery" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAIAAAkAAAAEAAAEAEAAAAAACAAAACAAAA=</HashCode>
+      <FileName>Handlers\search\search.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="SMRUCC.Clinic.OMIM.rtvl(Of T)" Collapsed="true">
+    <Position X="10.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>APIObject.vb</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="SMRUCC.Clinic.OMIM.Handlers.clinicalSynopsis.includes" Collapsed="true">
+    <Position X="12" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAQAAAAAAACAAAAAEAAAAACAAAIAAQCAAAA=</HashCode>
+      <FileName>Handlers\clinicalSynopsis\includes.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMRUCC.Clinic.OMIM.Handlers.entry.includes" Collapsed="true">
+    <Position X="13.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEABAAQAEAAAAACAAAAAEAEAAACIAAIAAQCAAAA=</HashCode>
+      <FileName>Handlers\entry\includes.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMRUCC.Clinic.OMIM.Handlers.entry.textSections" Collapsed="true">
+    <Position X="19" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAABIIAAACgJQAYAABAAAAgAgQYCABgCAACAhA=</HashCode>
+      <FileName>Handlers\entry\textSections.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMRUCC.Clinic.OMIM.Formats" Collapsed="true">
+    <Position X="10.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAABgAAAAAAAAAgAAEAAAAAAAIAAACAAAAAAA=</HashCode>
+      <FileName>APIObject.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMRUCC.Clinic.OMIM.Handlers.search.retrieves" Collapsed="true">
+    <Position X="15.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAQAAAAA=</HashCode>
+      <FileName>Handlers\search\search.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMRUCC.Clinic.OMIM.Handlers.search.sorts" Collapsed="true">
+    <Position X="17.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACBAAAAgAoAAAAAAAAAAAgAIAQAABAAAAAA=</HashCode>
+      <FileName>Handlers\search\search.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Module Name="SMRUCC.Clinic.OMIM.Extensions" Collapsed="true">
+    <Position X="10.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAQAAAAAAAAAAAACgAAIABAAAAQAAAABAAAA=</HashCode>
+      <FileName>Extensions.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="SMRUCC.Clinic.OMIM.My.Resources.Resources" Collapsed="true">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="SMRUCC.Clinic.OMIM.My.MySettingsProperty" Collapsed="true">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

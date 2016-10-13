@@ -1,0 +1,697 @@
+{  
+  "omim": {
+    "version": "1.0",
+    "entryList": [
+      {
+        "entry": {
+          "prefix": "#",
+          "mimNumber": 100100,
+          "status": "live",
+          "titles": {
+            "preferredTitle": "PRUNE BELLY SYNDROME; PBS",
+            "alternativeTitles": "ABDOMINAL MUSCLES, ABSENCE OF, WITH URINARY TRACT ABNORMALITY AND CRYPTORCHIDISM;;\nEAGLE-BARRETT SYNDROME; EGBRS"
+          },
+          "textSectionList": [
+            {
+              "textSection": {
+                "textSectionName": "text",
+                "textSectionTitle": "Text",
+                "textSectionContent": "A number sign (#) is used with this entry because of evidence that prune belly syndrome (PBS) is caused by homozygous mutation in the CHRM3 gene ({118494}) on chromosome 1q43. One such family has been reported."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "description",
+                "textSectionTitle": "Description",
+                "textSectionContent": "In its rare complete form, 'prune belly' syndrome comprises megacystis (massively enlarged bladder) with disorganized detrusor muscle, cryptorchidism, and thin abdominal musculature with overlying lax skin (summary by {23:Weber et al., 2011})."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "clinicalFeatures",
+                "textSectionTitle": "Clinical Features",
+                "textSectionContent": "This condition was first described by {7:Frolich (1839)}. The appellation 'prune belly syndrome' is descriptive because the intestinal pattern is evident through the thin, lax, protruding abdominal wall in the infant ({15:Osler, 1901}). (Osler did not use the term 'prune belly.' His article on this subject and one 'on a family form of recurring epistaxis, associated with multiple telangiectases of the skin and mucous membranes'--see {187300}--appeared successively in the November 1901 issue of the Johns Hopkins Hospital Bulletin. Osler wrote: 'In the summer of 1897 a case of remarkable distension of the abdomen was admitted to the wards, with greatly distended bladder, and on my return in September, Dr. Futcher, knowing that I would be interested in it, sent for the child.') The full syndrome probably occurs only in males ({25:Williams and Burkholder, 1967}).\n\nA possibly related syndrome was described in a single patient by {21:Texter and Murphy (1968)}. The triad consisted of absence of the right testis, kidney, and rectus abdominis muscle.\n\n{12:King and Prescott (1978)} presented evidence to support the suggestion that the maldevelopment of the abdominal musculature and abdominal laxity are secondary phenomena, the primary event being marked distention of the abdomen in the fetal period because of obstruction of the urinary tract. Likewise, {16:Pagon et al. (1979)} suggested that the abdominal muscle deficiency is secondary to fetal abdominal distention of various causes, most often perhaps, urethral obstruction with enlarged bladder. 'Prune belly' occurs, in the main, as a consequence of posterior urethral valves; thus the predominance as a male-limited multifactorial trait.\n\n{8:Gaboardi et al. (1982)} reported 2 brothers and a sister with prune belly syndrome with bilateral hydronephrosis, megaureter, and megabladder, but no urethral stenosis.\n\nA better prognosis than is usually thought to obtain was suggested by the series of 19 patients reported by {3:Burke et al. (1969)}.\n\n{10:Greskovich and Nyberg (1988)} gave a review in which they stated incorrectly that the term prune belly syndrome was coined by Osler.\n\n{6:Eagle and Barrett (1950)} described 9 cases of congenital deficiency of abdominal musculature with associated genitourinary abnormalities. They pointed out that genitourinary symptoms are often not present and that the obstructive manifestations in the genitourinary tract must be searched for and corrected at the earliest possible moment. {6:Eagle and Barrett (1950)} stated that 42 cases had been reported before their report of 9 cases. Every case except 1 was in a male.\n\n{20:Smolkin et al. (2008)} reported a male infant born with protrusion of both sides of the abdomen, consistent with prune belly; mild scoliosis, unilateral auricular sinus, bilateral cryptorchidism with normal-sized penis, and right-sided congenital hip dislocation were also noted. Chest x-ray showed multiple segmentation defects, including 11 pairs of ribs, bilateral cervical ribs, and T8 to T12 and S3 hemivertebrae with resultant scoliosis. Abdominal ultrasound demonstrated absence of upper abdominal muscles, liver in the right flank protrusion and both spleen and bowel in the left flank protrusion; the right kidney was normal, but the left kidney was absent, and there were normal-appearing intraabdominal testes. {20:Smolkin et al. (2008)} noted that their patient with prune belly syndrome had 2 previously unreported malformations, auricular sinus and hemivertebrae, and suggested that on the basis of the heterogeneous phenotype and the as yet unknown etiology, the designation be changed to 'prune belly association.'\n\n{22:Weber et al. (2005)} reported a consanguineous Turkish family in which 3 brothers had posterior urethral valves (PUVs) and 2 other brothers had PUV in association with prune belly syndrome; 1 of the latter boys died of urosepsis. The affected sibs had dysfunctional or areflexic bladders with vesicoureteral reflux and variably decreased glomerular filtration rates. The most severely affected brother had hydronephrosis, severe dysplasia of the right kidney, cryptorchidism, and prune belly abnormalities of the abdominal wall. There was also a sister who had normal renal function and no urinary tract abnormalities except for minimal left lower pole calyx hypoplasia. Abdominal ultrasound in both parents revealed no abnormalities of the kidneys or urinary tract. No associated extrarenal abnormalities were observed in any of the family members. {23:Weber et al. (2011)} restudied the Turkish family originally described by {22:Weber et al. (2005)}, into which a sixth affected brother with a malformed bladder had been born. Examination of affected individuals also revealed bilaterally impaired pupillary constriction to light and dry mouths."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "nomenclature",
+                "textSectionTitle": "Nomenclature",
+                "textSectionContent": "{5:Dorst and Seidel (1982)} suggested Eagle-Barrett syndrome as a 'kinder and more appropriate designation' than prune belly syndrome."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "inheritance",
+                "textSectionTitle": "Inheritance",
+                "textSectionContent": "Autosomal recessive inheritance is suggested by some reports. For example, in Lebanon, where the rate of consanguinity is high, {1:Afifi et al. (1972)} described an affected offspring of first-cousin parents.\n\n{9:Garlinger and Ott (1974)} described 2 affected brothers in 1 family and 2 affected male cousins in a second, and found 3 other reports of affected sibs, 2 of affected cousins and 1 of concordant male twins. In the first family the parents were nonconsanguineous. In the second family the affected boys' mothers were half sisters; they had different maternal grandmothers.\n\n{17:Ramasamy et al. (2005)} reported 2 brothers with deficient abdominal wall musculature and bilateral undescended testes, neither of whom had dilation of the urinary tract. There was no earlier family history of prune belly syndrome. {17:Ramasamy et al. (2005)} reviewed reported cases of 'complete' familial prune belly syndrome, in which the full clinical triad was present, noting that 28% of patients were female in the familial form of the syndrome compared to only 5% of nonfamilial cases. They stated that their findings strongly supported an autosomal recessive, sex-influenced mode of inheritance."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "populationGenetics",
+                "textSectionTitle": "Population Genetics",
+                "textSectionContent": "In British Columbia, {2:Baird and MacDonald (1981)} found that the incidence of prune belly syndrome between 1964 and 1978 was 1 in 29,231 live births."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "mapping",
+                "textSectionTitle": "Mapping",
+                "textSectionContent": "{22:Weber et al. (2005)} performed genomewide linkage analysis in a consanguineous Turkish family in which 5 brothers had posterior urethral valve/prune belly syndrome and identified a 35-cM region of homozygosity on chromosome 1q41-q44, with a maximum multipoint lod score of Z(max) = 3.134 (theta = 0) for the SNPs {dbSNP rs158724}-{dbSNP rs720163}. A second alternative locus was identified on chromosome 11p11 with a lod score of Z(max) = 3.61 (theta = 0). Equal significance for either locus was obtained when the affection status of the sibs' sister was set to 'unknown' (lod score of Z(max) = 3.01; theta = 0)."
+              }
+            },
+            {
+              "textSection": {
+                "textSectionName": "molecularGenetics",
+                "textSectionTitle": "Molecular Genetics",
+                "textSectionContent": "In a consanguineous Turkish family with posterior urethral valve/prune belly syndrome, previously studied by {22:Weber et al. (2005)}, {23:Weber et al. (2011)} performed exon capture and massively parallel sequencing and identified a homozygous frameshift mutation in the CHRM3 gene on chromosome 1q43 ({118494.0001}) that segregated with disease and was not found in 374 Turkish control chromosomes."
+              }
+            }
+          ],
+          "clinicalSynopsisExists": true,
+          "clinicalSynopsis": {
+            "inheritance": "Autosomal recessive {SNOMEDCT:258211005} {UMLS:C0441748} {HPO HP:0000007}",
+            "headAndNeckEyes": "Impaired pupillary constriction to light {UMLS:C3276092}",
+            "headAndNeckMouth": "Dry mouth {SNOMEDCT:87715008,56893005,300268000} {ICD10CM:K11.7} {UMLS:C0043352} {HPO HP:0000217 UMLS:C0043352}",
+            "cardiovascularHeart": "Congenital heart defect {SNOMEDCT:13213009} {ICD10CM:Q24.9} {ICD9CM:746.9} {UMLS:C0018798} {HPO HP:0002564 UMLS:C0018798}",
+            "cardiovascularVascular": "Patent ductus arteriosus {SNOMEDCT:253686000} {UMLS:C3495549} {HPO HP:0001643 UMLS:C0013274}",
+            "chestRibsSternumClaviclesAndScapulae": "Flared ribs {SNOMEDCT:249704008} {UMLS:C0426826};\nPectus excavatum {SNOMEDCT:391987005} {UMLS:C2051831} {HPO HP:0000767 UMLS:C0016842};\nPectus carinatum {SNOMEDCT:38774000} {UMLS:C2939416} {HPO HP:0000768 UMLS:C2939416}",
+            "abdomenGastrointestinal": "Imperforate anus {SNOMEDCT:204731006,204712000} {ICD10CM:Q42.3} {UMLS:C0003466} {HPO HP:0002023 UMLS:C0003466}",
+            "genitourinaryInternalGenitaliaMale": "Cryptorchidism {SNOMEDCT:204878001} {ICD10CM:Q53.9} {ICD9CM:752.51} {UMLS:C0010417} {HPO HP:0000028 UMLS:C0010417}",
+            "genitourinaryKidneys": "Hydronephrosis {SNOMEDCT:43064006} {ICD10CM:N13.30} {ICD9CM:591} {UMLS:C0020295} {HPO HP:0000126 UMLS:C0020295}",
+            "genitourinaryUreters": "Posterior urethral valves {SNOMEDCT:253900005} {ICD10CM:Q64.2} {UMLS:C0238506} {HPO HP:0010957};\nHydroureter {SNOMEDCT:95576001,69758005} {ICD10CM:N13.4,N28.82} {ICD9CM:593.5} {UMLS:C0521620} {HPO HP:0000072 UMLS:C0521620}",
+            "genitourinaryBladder": "Distended bladder {SNOMEDCT:54768000} {UMLS:C0005687};\nFetal urinary tract obstruction {UMLS:C3149221}",
+            "skeletalPelvis": "Congenital hip dislocation {SNOMEDCT:52781008,48334007} {ICD10CM:Q65.2} {ICD9CM:754.3} {UMLS:C0019555} {HPO HP:0001374}",
+            "skeletalFeet": "Clubfoot {SNOMEDCT:249808002,397932003} {ICD10CM:Q66.89,Q66.0} {ICD9CM:754.51} {UMLS:C0009081} {HPO HP:0001762 UMLS:C0009081}",
+            "skinNailsHairSkin": "Wrinkled abdominal skin {UMLS:C3149222}",
+            "prenatalManifestationsAmnioticFluid": "Oligohydramnios {SNOMEDCT:59566000} {ICD10CM:O41.0,O41.00} {ICD9CM:658.0} {UMLS:C0079924} {HPO HP:0001562 UMLS:C0079924}",
+            "molecularBasis": "Caused by mutation in the muscarinic cholinergic receptor-3 gene (CHRM3, {118494.0001})",
+            "inheritanceExists": true,
+            "growthExists": false,
+            "growthHeightExists": false,
+            "growthWeightExists": false,
+            "growthOtherExists": false,
+            "headAndNeckExists": true,
+            "headAndNeckHeadExists": false,
+            "headAndNeckFaceExists": false,
+            "headAndNeckEarsExists": false,
+            "headAndNeckEyesExists": true,
+            "headAndNeckNoseExists": false,
+            "headAndNeckMouthExists": true,
+            "headAndNeckTeethExists": false,
+            "headAndNeckNeckExists": false,
+            "cardiovascularExists": true,
+            "cardiovascularHeartExists": true,
+            "cardiovascularVascularExists": true,
+            "respiratoryExists": false,
+            "respiratoryNasopharynxExists": false,
+            "respiratoryLarynxExists": false,
+            "respiratoryAirwaysExists": false,
+            "respiratoryLungExists": false,
+            "chestExists": true,
+            "chestExternalFeaturesExists": false,
+            "chestRibsSternumClaviclesAndScapulaeExists": true,
+            "chestBreastsExists": false,
+            "chestDiaphragmExists": false,
+            "abdomenExists": true,
+            "abdomenExternalFeaturesExists": false,
+            "abdomenLiverExists": false,
+            "abdomenPancreasExists": false,
+            "abdomenBiliaryTractExists": false,
+            "abdomenSpleenExists": false,
+            "abdomenGastrointestinalExists": true,
+            "genitourinaryExists": true,
+            "genitourinaryExternalGenitaliaMaleExists": false,
+            "genitourinaryExternalGenitaliaFemaleExists": false,
+            "genitourinaryInternalGenitaliaMaleExists": true,
+            "genitourinaryInternalGenitaliaFemaleExists": false,
+            "genitourinaryKidneysExists": true,
+            "genitourinaryUretersExists": true,
+            "genitourinaryBladderExists": true,
+            "skeletalExists": true,
+            "skeletalSkullExists": false,
+            "skeletalSpineExists": false,
+            "skeletalPelvisExists": true,
+            "skeletalLimbsExists": false,
+            "skeletalHandsExists": false,
+            "skeletalFeetExists": true,
+            "skinNailsHairExists": true,
+            "skinNailsHairSkinExists": true,
+            "skinNailsHairSkinHistologyExists": false,
+            "skinNailsHairSkinElectronMicroscopyExists": false,
+            "skinNailsHairNailsExists": false,
+            "skinNailsHairHairExists": false,
+            "muscleSoftTissueExists": false,
+            "neurologicExists": false,
+            "neurologicCentralNervousSystemExists": false,
+            "neurologicPeripheralNervousSystemExists": false,
+            "neurologicBehavioralPsychiatricManifestationsExists": false,
+            "voiceExists": false,
+            "metabolicFeaturesExists": false,
+            "endocrineFeaturesExists": false,
+            "hematologyExists": false,
+            "immunologyExists": false,
+            "neoplasiaExists": false,
+            "prenatalManifestationsExists": true,
+            "prenatalManifestationsMovementExists": false,
+            "prenatalManifestationsAmnioticFluidExists": true,
+            "prenatalManifestationsPlacentaAndUmbilicalCordExists": false,
+            "prenatalManifestationsMaternalExists": false,
+            "prenatalManifestationsDeliveryExists": false,
+            "laboratoryAbnormalitiesExists": false,
+            "miscellaneousExists": false,
+            "molecularBasisExists": true,
+            "oldFormatExists": false,
+            "contributors": "Marla J. F. O'Neill - updated : 12/02/2011",
+            "creationDate": "John F. Jackson : 6/15/1995",
+            "editHistory": "joanna : 07/27/2016\njoanna : 12/02/2011\njoanna : 9/12/2011\njoanna : 2/14/2011\njoanna : 1/24/2011\njoanna : 10/28/2010\nterry : 10/12/2010\nalopez : 9/6/2007",
+            "epochCreated": 803188800,
+            "dateCreated": "Thu, 15 Jun 1995 00:00:00 EDT",
+            "epochUpdated": 1469592000,
+            "dateUpdated": "Wed, 27 Jul 2016 00:00:00 EDT"
+          },
+          "seeAlso": "Burton and Dillard (1984); Harley et al. (1972); Lee  (1977); Monie\nand Monie (1979); Riccardi and Grum (1977); Roberts  (1956); Welch\nand Kearney (1974); Woodhouse et al. (1982)",
+          "referenceList": [
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 1,
+                "authors": "Afifi, A. K., Rebeiz, J., Mire, J., Andonian, S. J., Der Kaloustian, V. M.",
+                "title": "The myopathology of the prune belly syndrome.",
+                "source": "J. Neurol. Sci. 15: 153-166, 1972.",
+                "pubmedID": 4400845,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 2,
+                "authors": "Baird, P. A., MacDonald, E. C.",
+                "title": "An epidemiologic study of congenital malformations of the anterior abdominal wall in more than half a million consecutive live births.",
+                "source": "Am. J. Hum. Genet. 33: 470-478, 1981.",
+                "pubmedID": 6454342,
+                "pubmedCentralID": 1685049,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 3,
+                "authors": "Burke, E. C., Shin, M. H., Kelalis, P. P.",
+                "title": "Prune belly syndrome: clinical findings and survival.",
+                "source": "Am. J. Dis. Child. 117: 668-671, 1969.",
+                "pubmedID": 4239017,
+                "pubmedImages": false,
+                "articleUrl": "http://archpedi.ama-assn.org/cgi/pmidlookup?view=long&pmid=4239017",
+                "publisherAbbreviation": "HighWire",
+                "publisherName": "HighWire Press",
+                "publisherUrl": "http://highwire.stanford.edu"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 4,
+                "authors": "Burton, B. K., Dillard, R. G.",
+                "title": "Prune belly syndrome: observations supporting the hypothesis of abdominal overdistention.",
+                "source": "Am. J. Med. Genet. 17: 669-672, 1984.",
+                "pubmedID": 6231862,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 5,
+                "authors": "Dorst, J. P., Seidel, H. M.",
+                "title": "Eagle-Barrett syndrome. (Letter)",
+                "source": "Pediatrics 69: 504 only, 1982.",
+                "pubmedID": 7070906,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 6,
+                "authors": "Eagle, J. F., Jr., Barrett, G. S.",
+                "title": "Congenital deficiency of abdominal musculature with associated genitourinary abnormalities: a syndrome: report of nine cases.",
+                "source": "Pediatrics 6: 721-736, 1950.",
+                "pubmedID": 14797335,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 7,
+                "authors": "Frolich, F.",
+                "title": "Der Mangel der Muskeln, insbesondere der Seitenbauchmuskeln.",
+                "source": "Dissertation: Wurzburg (pub.)   1839.",
+                "articleUrl": "http://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10848879_00001.html"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 8,
+                "authors": "Gaboardi, F., Sterpa, A., Thiebat, E., Cornali, R., Manfredi, M., Bianchi, C., Giacomoni, M. A., Bertagnoli, L.",
+                "title": "Prune-belly syndrome: report of three siblings.",
+                "source": "Helv. Paediat. Acta 37: 283-288, 1982.",
+                "pubmedID": 7118560,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 9,
+                "authors": "Garlinger, P., Ott, J.",
+                "title": "Prune belly syndrome: possible genetic implications.",
+                "source": "Birth Defects Orig. Art. Ser. X(8): 173-180, 1974."
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 10,
+                "authors": "Greskovich, F. J., III, Nyberg, L. M., Jr.",
+                "title": "The prune belly syndrome: a review of its etiology, defects, treatment and prognosis.",
+                "source": "J. Urol. 140: 707-712, 1988.",
+                "pubmedID": 3047433,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 11,
+                "authors": "Harley, L. M., Chen, Y., Rattner, W. H.",
+                "title": "Prune belly syndrome.",
+                "source": "J. Urol. 108: 174-176, 1972.",
+                "pubmedID": 4402425,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 12,
+                "authors": "King, C. R., Prescott, G.",
+                "title": "Pathogenesis of the prune-belly anomaly.",
+                "source": "J. Pediat. 93: 273-274, 1978.",
+                "pubmedID": 27602,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 13,
+                "authors": "Lee, S. M.",
+                "title": "Prune-belly syndrome in a 54-year-old man.",
+                "source": "JAMA 237: 2216-2217, 1977.",
+                "pubmedID": 16145,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 14,
+                "authors": "Monie, I. W., Monie, B. J.",
+                "title": "Prune-belly syndrome and fetal ascites.",
+                "source": "Teratology 19: 111-117, 1979.",
+                "pubmedID": 156413,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 15,
+                "authors": "Osler, W.",
+                "title": "Congenital absence of the abdominal muscles with distended and hypertrophied urinary bladder.",
+                "source": "Bull. Johns Hopkins Hosp. 12: 331-333, 1901."
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 16,
+                "authors": "Pagon, R. A., Smith, D. W., Shepard, T. H.",
+                "title": "Urethral obstruction malformation complex: a cause of abdominal deficiency and the 'prune belly'.",
+                "source": "J. Pediat. 94: 900-906, 1979.",
+                "pubmedID": 156252,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 17,
+                "authors": "Ramasamy, R., Haviland, M., Woodard, J. R., Barone, J. G.",
+                "title": "Patterns of inheritance in familial prune belly syndrome.",
+                "source": "Urology 65: 1227 only, 2005.",
+                "pubmedID": 15922438,
+                "pubmedImages": false,
+                "articleUrl": "http://linkinghub.elsevier.com/retrieve/pii/S0090-4295(04)01524-9",
+                "publisherAbbreviation": "ES",
+                "publisherName": "Elsevier Science",
+                "publisherUrl": "http://www.elsevier.com/"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 18,
+                "authors": "Riccardi, V. M., Grum, C. M.",
+                "title": "The prune belly anomaly: heterogeneity and superficial X-linkage mimicry.",
+                "source": "J. Med. Genet. 14: 266-270, 1977.",
+                "pubmedID": 144797,
+                "pubmedCentralID": 1013581,
+                "pubmedImages": false,
+                "articleUrl": "http://jmg.bmj.com/cgi/pmidlookup?view=long&pmid=144797",
+                "publisherAbbreviation": "HighWire",
+                "publisherName": "HighWire Press",
+                "publisherUrl": "http://highwire.stanford.edu"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 19,
+                "authors": "Roberts, P.",
+                "title": "Congenital absence of the abdominal muscles with associated abnormalities of the genito-urinary tract.",
+                "source": "Arch. Dis. Child. 31: 236-239, 1956.",
+                "pubmedID": 13328166,
+                "pubmedCentralID": 2011961,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 20,
+                "authors": "Smolkin, T., Soudack, M., Goldstein, I., Sujov, P., Makhoul, I. R.",
+                "title": "Prune belly syndrome: expanding the phenotype.",
+                "source": "Clin. Dysmorph. 17: 133-135, 2008.",
+                "pubmedID": 18388787,
+                "pubmedImages": false,
+                "articleUrl": "http://meta.wkhealth.com/pt/pt-core/template-journal/lwwgateway/media/landingpage.htm?issn=0962-8827&volume=17&issue=2&spage=133",
+                "publisherAbbreviation": "LWW",
+                "publisherName": "Lippincott Williams & Wilkins",
+                "publisherUrl": "http://www.lww.com/"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 21,
+                "authors": "Texter, J. H., Murphy, G. P.",
+                "title": "The right-sided syndrome: congenital absence of the right testis, kidney and rectus: urologic diagnosis and treatment.",
+                "source": "Johns Hopkins Med. J. 122: 224-228, 1968.",
+                "pubmedID": 4231058,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 22,
+                "authors": "Weber, S., Mir, S., Schlingmann, K. P., Nurnberg, G., Becker, C., Kara, P. E., Ozkayin, N., Konrad, M., Nurnberg, P., Schaefer, F.",
+                "title": "Gene locus ambiguity in posterior urethral valves/prune-belly syndrome.",
+                "source": "Pediat. Nephrol. 20: 1036-1042, 2005.",
+                "pubmedID": 15912376,
+                "pubmedImages": false,
+                "articleUrl": "http://dx.doi.org/10.1007/s00467-005-1977-7",
+                "publisherAbbreviation": "Springer",
+                "publisherName": "Springer",
+                "publisherUrl": "http://www.springeronline.com/"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 23,
+                "authors": "Weber, S., Thiele, H., Mir, S., Toliat, M. R., Sozeri, B., Reutter, H., Draaken, M., Ludwig, M., Altmuller, J., Frommolt, P., Stuart, H. M., Ranjzad, P., {and 12 others}",
+                "title": "Muscarinic acetylcholine receptor M3 mutation causes urinary bladder disease and a prune-belly-like syndrome.",
+                "source": "Am. J. Hum. Genet. 89: 668-674, 2011.",
+                "pubmedID": 22077972,
+                "pubmedCentralID": 3213389,
+                "pubmedImages": true,
+                "articleUrl": "http://linkinghub.elsevier.com/retrieve/pii/S0002-9297(11)00441-1",
+                "publisherAbbreviation": "ES",
+                "publisherName": "Elsevier Science",
+                "publisherUrl": "http://www.elsevier.com/"
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 24,
+                "authors": "Welch, K. J., Kearney, G. P.",
+                "title": "Abdominal musculature deficiency syndrome: prune belly.",
+                "source": "J. Urol. 111: 693-700, 1974.",
+                "pubmedID": 4150949,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 25,
+                "authors": "Williams, D. I., Burkholder, G. V.",
+                "title": "The prune belly syndrome.",
+                "source": "J. Urol. 98: 244-251, 1967.",
+                "pubmedID": 4382958,
+                "pubmedImages": false
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100100,
+                "referenceNumber": 26,
+                "authors": "Woodhouse, C. R. J., Ransley, P. G., Innes-Williams, D.",
+                "title": "Prune belly syndrome--report of 47 cases.",
+                "source": "Arch. Dis. Child. 57: 856-859, 1982.",
+                "pubmedID": 6128960,
+                "pubmedCentralID": 1628035,
+                "pubmedImages": false
+              }
+            }
+          ],
+          "phenotypeMapExists": true,
+          "phenotypeMapList": [
+            {
+              "phenotypeMap": {
+                "mimNumber": 118494,
+                "phenotype": "?Prune belly syndrome",
+                "phenotypeMimNumber": 100100,
+                "phenotypeMappingKey": 3,
+                "phenotypeInheritance": "Autosomal recessive",
+                "sequenceID": 1553,
+                "chromosome": 1,
+                "chromosomeSymbol": "1",
+                "chromosomeSort": 1553,
+                "chromosomeLocationStart": 239386564,
+                "chromosomeLocationEnd": 239915449,
+                "transcript": "uc001hyp.4",
+                "cytoLocation": "1q41-q44",
+                "computedCytoLocation": "1q43",
+                "geneSymbols": "CHRM3, PBS, EGBRS",
+                "geneInheritance": null
+              }
+            }
+          ],
+          "externalLinks": {
+            "swissProtIDs": "P20309",
+            "mgiHumanDisease": false,
+            "wormbaseDO": false,
+            "possumSyndromes": "dfee2e6f-9dbd-45be-9e5d-1c124ca71c7e;;Urethral obstruction sequence",
+            "coriellDiseases": "ABDOMINAL MUSCLES, ABSENCE OF, WITH URINARY TRACT ABNORMALITY ANDCRYPTORCHIDISM",
+            "dermAtlas": false,
+            "orphanetDiseases": "2970;;566;;Prune belly syndrome",
+            "ordrDiseases": "7479;;Prune belly syndrome",
+            "omiaIDs": "000243;;Cryptorchidism",
+            "snomedctIDs": "5187006",
+            "icd10cmIDs": "Q79.4",
+            "icd9cmIDs": "756.71",
+            "umlsIDs": "C0033770",
+            "nextGxDx": false,
+            "gtr": true,
+            "geneTests": false,
+            "geneticAllianceIDs": "6011",
+            "cmgGene": false,
+            "keggPathways": false,
+            "gwasCatalog": false,
+            "clinGen": false
+          },
+          "contributors": "Marla J. F. O'Neill - updated : 12/2/2011\nMarla J. F. O'Neill - updated : 5/8/2009\nVictor A. McKusick - updated : 9/4/2007",
+          "creationDate": "Victor A. McKusick : 6/4/1986",
+          "editHistory": "carol : 07/30/2015\nalopez : 12/9/2014\ncarol : 5/15/2014\njoanna : 12/19/2011\ncarol : 12/6/2011\ncarol : 12/6/2011\nterry : 12/2/2011\nterry : 6/3/2009\nwwang : 5/20/2009\nterry : 5/8/2009\nmgross : 3/4/2009\njoanna : 3/3/2009\ncarol : 7/3/2008\nalopez : 9/6/2007\nalopez : 9/6/2007\nterry : 9/4/2007\ncarol : 11/18/2004\nterry : 6/2/2004\ndholmes : 10/6/1997\nterry : 2/13/1997\nterry : 2/13/1997\ncarol : 7/12/1996\nmimadm : 4/18/1994\ncarol : 2/13/1994\ncarol : 8/25/1992\nsupermim : 3/16/1992\ncarol : 9/4/1990",
+          "epochCreated": 518241600,
+          "dateCreated": "Wed, 04 Jun 1986 00:00:00 EDT",
+          "epochUpdated": 1438228800,
+          "dateUpdated": "Thu, 30 Jul 2015 00:00:00 EDT"
+        }
+      },
+      {
+        "entry": {
+          "mimNumber": 100200,
+          "status": "live",
+          "titles": {
+            "preferredTitle": "ABDUCENS PALSY"
+          },
+          "textSectionList": [
+            {
+              "textSection": {
+                "textSectionName": "text",
+                "textSectionTitle": "Text",
+                "textSectionContent": "This is a form of hereditary strabismus. Affected persons in 2 or more generations have been reported ({1:Chavasse, 1938}; {2:Francois, 1961}). Nuclear aplasia has been found in some cases ({3:Phillips et al., 1932}). Abducens palsy also occurs as part of the Moebius syndrome ({157900})."
+              }
+            }
+          ],
+          "clinicalSynopsisExists": true,
+          "clinicalSynopsis": {
+            "oldFormat": {
+              "Eyes": "Abducens palsy {UMLS:C1847523} {HPO HP:0011349}; Strabismus {UMLS:C2020541} {HPO HP:0000486 UMLS:C2020541};",
+              "Neuro": "Abducens nucleus aplasia;",
+              "Inheritance": "Autosomal dominant {SNOMEDCT:263681008} {UMLS:C0443147} {HPO HP:0000006 UMLS:C0443147};"
+            },
+            "inheritanceExists": false,
+            "growthExists": false,
+            "growthHeightExists": false,
+            "growthWeightExists": false,
+            "growthOtherExists": false,
+            "headAndNeckExists": false,
+            "headAndNeckHeadExists": false,
+            "headAndNeckFaceExists": false,
+            "headAndNeckEarsExists": false,
+            "headAndNeckEyesExists": false,
+            "headAndNeckNoseExists": false,
+            "headAndNeckMouthExists": false,
+            "headAndNeckTeethExists": false,
+            "headAndNeckNeckExists": false,
+            "cardiovascularExists": false,
+            "cardiovascularHeartExists": false,
+            "cardiovascularVascularExists": false,
+            "respiratoryExists": false,
+            "respiratoryNasopharynxExists": false,
+            "respiratoryLarynxExists": false,
+            "respiratoryAirwaysExists": false,
+            "respiratoryLungExists": false,
+            "chestExists": false,
+            "chestExternalFeaturesExists": false,
+            "chestRibsSternumClaviclesAndScapulaeExists": false,
+            "chestBreastsExists": false,
+            "chestDiaphragmExists": false,
+            "abdomenExists": false,
+            "abdomenExternalFeaturesExists": false,
+            "abdomenLiverExists": false,
+            "abdomenPancreasExists": false,
+            "abdomenBiliaryTractExists": false,
+            "abdomenSpleenExists": false,
+            "abdomenGastrointestinalExists": false,
+            "genitourinaryExists": false,
+            "genitourinaryExternalGenitaliaMaleExists": false,
+            "genitourinaryExternalGenitaliaFemaleExists": false,
+            "genitourinaryInternalGenitaliaMaleExists": false,
+            "genitourinaryInternalGenitaliaFemaleExists": false,
+            "genitourinaryKidneysExists": false,
+            "genitourinaryUretersExists": false,
+            "genitourinaryBladderExists": false,
+            "skeletalExists": false,
+            "skeletalSkullExists": false,
+            "skeletalSpineExists": false,
+            "skeletalPelvisExists": false,
+            "skeletalLimbsExists": false,
+            "skeletalHandsExists": false,
+            "skeletalFeetExists": false,
+            "skinNailsHairExists": false,
+            "skinNailsHairSkinExists": false,
+            "skinNailsHairSkinHistologyExists": false,
+            "skinNailsHairSkinElectronMicroscopyExists": false,
+            "skinNailsHairNailsExists": false,
+            "skinNailsHairHairExists": false,
+            "muscleSoftTissueExists": false,
+            "neurologicExists": false,
+            "neurologicCentralNervousSystemExists": false,
+            "neurologicPeripheralNervousSystemExists": false,
+            "neurologicBehavioralPsychiatricManifestationsExists": false,
+            "voiceExists": false,
+            "metabolicFeaturesExists": false,
+            "endocrineFeaturesExists": false,
+            "hematologyExists": false,
+            "immunologyExists": false,
+            "neoplasiaExists": false,
+            "prenatalManifestationsExists": false,
+            "prenatalManifestationsMovementExists": false,
+            "prenatalManifestationsAmnioticFluidExists": false,
+            "prenatalManifestationsPlacentaAndUmbilicalCordExists": false,
+            "prenatalManifestationsMaternalExists": false,
+            "prenatalManifestationsDeliveryExists": false,
+            "laboratoryAbnormalitiesExists": false,
+            "miscellaneousExists": false,
+            "molecularBasisExists": false,
+            "oldFormatExists": true,
+            "creationDate": "Undefined",
+            "editHistory": "Undefined"
+          },
+          "referenceList": [
+            {
+              "reference": {
+                "mimNumber": 100200,
+                "referenceNumber": 1,
+                "authors": "Chavasse, F. B.",
+                "title": "The ocular palsies.",
+                "source": "Trans. Ophthal. Soc. U.K. 58: 493 only, 1938."
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100200,
+                "referenceNumber": 2,
+                "authors": "Francois, J.",
+                "title": "Heredity in Ophthalmology.",
+                "source": "St. Louis: C. V. Mosby (pub.)   1961. P. 280."
+              }
+            },
+            {
+              "reference": {
+                "mimNumber": 100200,
+                "referenceNumber": 3,
+                "authors": "Phillips, W. H., Dirion, J. K., Graves, G. O.",
+                "title": "Congenital bilateral palsy of abducens.",
+                "source": "Arch. Ophthal. 8: 355-364, 1932."
+              }
+            }
+          ],
+          "externalLinks": {
+            "mgiHumanDisease": false,
+            "wormbaseDO": false,
+            "dermAtlas": false,
+            "umlsIDs": "C1847523",
+            "nextGxDx": false,
+            "gtr": true,
+            "geneTests": false,
+            "diseaseOntologyIDs": "10865",
+            "cmgGene": false,
+            "keggPathways": false,
+            "gwasCatalog": false,
+            "clinGen": false
+          },
+          "creationDate": "Victor A. McKusick : 6/4/1986",
+          "editHistory": "terry : 05/13/2010\nterry : 3/23/2010\ndavew : 8/15/1994\nmimadm : 3/11/1994\nsupermim : 3/16/1992\nsupermim : 3/20/1990\nddp : 10/26/1989\nmarie : 3/25/1988",
+          "epochCreated": 518241600,
+          "dateCreated": "Wed, 04 Jun 1986 00:00:00 EDT",
+          "epochUpdated": 1273723200,
+          "dateUpdated": "Thu, 13 May 2010 00:00:00 EDT"
+        }
+      }
+    ]
+  }
+}

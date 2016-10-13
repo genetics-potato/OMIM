@@ -1,0 +1,14 @@
+{"omim": { 
+"version": "1.0",
+"clinicalSynopsisList": [ 
+{"clinicalSynopsis": { 
+"mimNumber": 100100, 
+"prefix": "#", 
+"preferredTitle": "PRUNE BELLY SYNDROME; PBS"
+} },
+{"clinicalSynopsis": { 
+"mimNumber": 100200, 
+"preferredTitle": "ABDUCENS PALSY"
+} 
+} ] 
+} }
