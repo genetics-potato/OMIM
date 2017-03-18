@@ -31,8 +31,54 @@ Namespace XML
         Public Property classification As classification
         Public Property synonyms As synonym()
         Public Property products As product()
+        Public Property mixtures As mixture()
+        Public Property packagers As packager()
+        Public Property manufacturers As manufacturer()
+        Public Property prices As price()
+        Public Property categories As category()
+        <XmlArray("affected-organisms")>
+        Public Property affected_organisms As affected_organism()
 
     End Class
+
+    <XmlType("affected-organism")>
+    Public Class affected_organism
+        <XmlText>
+        Public Property value As String
+    End Class
+
+    Public Class category
+        Public Property category As String
+        <XmlElement("mesh-id")> Public Property mesh_id As String
+    End Class
+
+    Public Class price
+        Public Property description As String
+        Public Property cost As cost
+        Public Property unit As String
+    End Class
+
+    Public Class cost
+        <XmlAttribute> Public Property currency As String
+        <XmlText> Public Property value As String
+    End Class
+
+    Public Class manufacturer
+        <XmlAttribute> Public Property generic As Boolean
+        <XmlAttribute> Public Property url As String
+        <XmlText> Public Property value As String
+    End Class
+
+    Public Class packager
+        Public Property name As String
+        Public Property url As String
+    End Class
+
+    Public Class mixture
+        Public Property name As String
+        Public Property ingredients As String
+    End Class
+
 
     Public Class product
         Public Property name As String
