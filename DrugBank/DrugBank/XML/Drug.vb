@@ -38,7 +38,22 @@ Namespace XML
         Public Property categories As category()
         <XmlArray("affected-organisms")>
         Public Property affected_organisms As affected_organism()
+        <XmlArray("drug-interactions")>
+        Public Property drug_interactions As DrugInteraction()
 
+    End Class
+
+    <XmlType("drug-interaction")>
+    Public Class DrugInteraction
+
+        <XmlElement("drugbank-id")>
+        Public Property drugbankID As String
+        Public Property name As String
+        Public Property description As String
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 
     <XmlType("affected-organism")>
