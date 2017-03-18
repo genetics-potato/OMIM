@@ -40,115 +40,62 @@ Namespace XML
         Public Property affected_organisms As affected_organism()
         <XmlArray("drug-interactions")>
         Public Property drug_interactions As DrugInteraction()
+        Public Property patents As patent()
+        Public Property sequences As sequence()
+        <XmlArray("experimental-properties")>
+        Public Property experimentalProperties As [property]()
+        <XmlArray("external-identifiers")>
+        Public Property externalIdentifiers As externalIdentifier()
+        Public Property pathways As pathway()
+        Public Property targets As target()
 
     End Class
 
-    <XmlType("drug-interaction")>
-    Public Class DrugInteraction
+    Public Class pathway
 
-        <XmlElement("drugbank-id")>
-        Public Property drugbankID As String
+        <XmlElement("smpdb-id")>
+        Public Property smpdb_id As String
         Public Property name As String
-        Public Property description As String
-
-        Public Overrides Function ToString() As String
-            Return Me.GetJson
-        End Function
-    End Class
-
-    <XmlType("affected-organism")>
-    Public Class affected_organism
-        <XmlText>
-        Public Property value As String
-    End Class
-
-    Public Class category
         Public Property category As String
-        <XmlElement("mesh-id")> Public Property mesh_id As String
+        Public Property drugs As drug()
+        Public Property enzymes As enzyme()
+
+        Public Class drug
+            <XmlElement("drugbank-id")>
+            Public Property drugbankID As String
+            Public Property name As String
+        End Class
     End Class
 
-    Public Class price
-        Public Property description As String
-        Public Property cost As cost
-        Public Property unit As String
+    Public Class enzyme
+        <XmlElement("uniprot-id")>
+        Public Property uniprotID As String
     End Class
 
-    Public Class cost
-        <XmlAttribute> Public Property currency As String
-        <XmlText> Public Property value As String
+    <XmlType("external-identifier")>
+    Public Class externalIdentifier
+        Public Property resource As String
+        Public Property identifier As String
     End Class
 
-    Public Class manufacturer
-        <XmlAttribute> Public Property generic As Boolean
-        <XmlAttribute> Public Property url As String
-        <XmlText> Public Property value As String
-    End Class
-
-    Public Class packager
-        Public Property name As String
-        Public Property url As String
-    End Class
-
-    Public Class mixture
-        Public Property name As String
-        Public Property ingredients As String
-    End Class
-
-
-    Public Class product
-        Public Property name As String
-        Public Property labeller As String
-        <XmlElement("ndc-id")> Public Property ndc_id As String
-        <XmlElement("ndc-product-code")> Public Property ndc_product_code As String
-        <XmlElement("dpd-id")> Public Property dpd_id As String
-        <XmlElement("started-marketing-on")> Public Property started_marketing_on As String
-        <XmlElement("ended-marketing-on")> Public Property ended_marketing_on As String
-        <XmlElement("dosage-form")> Public Property dosage_form As String
-        Public Property strength As String
-        Public Property route As String
-        <XmlElement("fda-application-number")> Public Property fda_application_number As String
-        Public Property generic As Boolean
-        <XmlElement("over-the-counter")> Public Property over_the_counter As Boolean
-        Public Property approved As Boolean
-        Public Property country As String
+    Public Class [property]
+        Public Property kind As String
+        Public Property value As String
         Public Property source As String
     End Class
 
-    Public Class synonym
-        <XmlAttribute> Public Property language As String
-        <XmlAttribute> Public Property coder As String
-        <XmlText> Public Property value As String
-
-        Public Overrides Function ToString() As String
-            Return Me.GetJson
-        End Function
-    End Class
-
-    Public Class classification
-        Public Property description As String
-        <XmlElement("direct-parent")> Public Property directParent As String
-        Public Property kingdom As String
-        Public Property superclass As String
-        Public Property [class] As String
-        Public Property subclass As String
-
-        Public Overrides Function ToString() As String
-            Return Me.GetJson
-        End Function
-    End Class
-
-    <XmlType("group")> Public Class Group
+    Public Class sequence
+        <XmlAttribute>
+        Public Property format As String
         <XmlText>
-        Public Property value As String
+        Public Property sequence As String
     End Class
 
-    Public Class DrugBankID
-
-        <XmlAttribute> Public Property primary As Boolean
-        <XmlText> Public Property ID As String
-
-        Public Overrides Function ToString() As String
-            Return Me.GetJson
-        End Function
+    Public Class patent
+        Public Property number As String
+        Public Property country As String
+        Public Property approved As String
+        Public Property expires As String
+        <XmlElement("pediatric-extension")> Public Property pediatric_extension As Boolean
     End Class
 End Namespace

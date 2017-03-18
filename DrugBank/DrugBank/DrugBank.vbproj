@@ -73,6 +73,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XML\target.vb" />
+    <Compile Include="XML\objects.vb" />
     <Compile Include="XML\Drug.vb" />
     <Compile Include="XML\Database.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
