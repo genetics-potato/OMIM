@@ -21,10 +21,10 @@ Partial Module CLI
     <ExportAPI("/Query.entry", Info:="Gets OMIM data by mim entry number.",
                Usage:="/Query.entry /id <id|id_list|id_list.txt> [/includes <all,...> /text <all> /out <out_file|std_out>]",
                Example:="/Query.entry /id 100100,100200 /includes referenceList,clinicalSynopsis /text all /out ~/example.json")>
-    <ParameterInfo("/id", False, AcceptTypes:={GetType(String), GetType(String())},
+    <Argument("/id", False, AcceptTypes:={GetType(String), GetType(String())},
                    Description:=CLI_inputs,
                    Example:="/id ""~/entries.txt""")>
-    <ParameterInfo("/includes", True, AcceptTypes:={GetType(String())},
+    <Argument("/includes", True, AcceptTypes:={GetType(String())},
                    Description:="Additional content can be retrieved using the 'include' parameter, the includes are as follows:
                    
 |Parameter         |Description|
@@ -43,7 +43,7 @@ Partial Module CLI
 |dates             |Include the dates data with the entry.|
 |all               |Include the above data with the entry.|",
                    Example:="/includes referenceList,clinicalSynopsis")>
-    <ParameterInfo("/out", True, AcceptTypes:={GetType(String)},
+    <Argument("/out", True, AcceptTypes:={GetType(String)},
                    Description:=CLI_output,
                    Example:="/out ""/home/xieguigang/query_result.json""")>
     Public Function QueryEntry(args As CommandLine) As Integer
@@ -84,13 +84,13 @@ Partial Module CLI
 
     <ExportAPI("/Query.clinicalSynopsis", Usage:="/Query.clinicalSynopsis /id <id|id_list|id_list.txt> [/includes <all,...> /out <out_file|std_out>]",
                Example:="/Query.clinicalSynopsis /id 100100 /includes externalLinks,clinicalSynopsis /out ./100100-clinicalSynopsis.json")>
-    <ParameterInfo("/id", False, AcceptTypes:={GetType(String), GetType(String())},
+    <Argument("/id", False, AcceptTypes:={GetType(String), GetType(String())},
                    Description:=CLI_inputs,
                    Example:="/id ""~/entries.txt""")>
-    <ParameterInfo("/out", True, AcceptTypes:={GetType(String)},
+    <Argument("/out", True, AcceptTypes:={GetType(String)},
                    Description:=CLI_output,
                    Example:="/out ""/home/xieguigang/query_result.json""")>
-    <ParameterInfo("/includes", True, AcceptTypes:={GetType(String())},
+    <Argument("/includes", True, AcceptTypes:={GetType(String())},
                    Description:="Additional content can be retrieved using the 'include' parameter, the includes are as follows:
 
 |Parameter       |Description                                                                                             |
@@ -117,10 +117,10 @@ Partial Module CLI
     End Function
 
     <ExportAPI("/Query.geneMap.entry", Usage:="/Query.geneMap.entry /id <id|id_list|id_list.txt> [/out <out_file|std_out>]")>
-    <ParameterInfo("/id", False, AcceptTypes:={GetType(String), GetType(String())},
+    <Argument("/id", False, AcceptTypes:={GetType(String), GetType(String())},
                    Description:=CLI_inputs,
                    Example:="/id ""~/entries.txt""")>
-    <ParameterInfo("/out", True, AcceptTypes:={GetType(String)},
+    <Argument("/out", True, AcceptTypes:={GetType(String)},
                    Description:=CLI_output,
                    Example:="/out ""/home/xieguigang/query_result.json""")>
     Public Function QueryGeneMaps_entry(args As CommandLine) As Integer
@@ -143,10 +143,10 @@ Partial Module CLI
 |phenotypeExists|``true`` will only return entries with phenotypes, ``false`` will only return entries without phenotypes|"
 
     <ExportAPI("/Query.geneMap.loci", Usage:="/Query.geneMap.loci /chr <chr_id> /chr.Sort <int> [/phenotypeExists /start <default:0> /limit <default:0> /out <out_file|std_out>]")>
-    <ParameterInfo("/out", True, AcceptTypes:={GetType(String)},
+    <Argument("/out", True, AcceptTypes:={GetType(String)},
                    Description:=CLI_output,
                    Example:="/out ""/home/xieguigang/query_result.json""")>
-    <ParameterInfo("/phenotypeExists", True, AcceptTypes:={GetType(Boolean)},
+    <Argument("/phenotypeExists", True, AcceptTypes:={GetType(Boolean)},
                    Description:=geneMap_phenotypeExists)>
     Public Function QueryGeneMaps_loci(args As CommandLine) As Integer
         Dim chr As String = args("/chr")
@@ -174,13 +174,13 @@ Partial Module CLI
     End Function
 
     <ExportAPI("/Query.geneMap.seqID", Usage:="/Query.geneMap.seqID /seqid <id> [/phenotypeExists /start <default:0> /limit <default:0> /out <out_file|std_out>]")>
-    <ParameterInfo("/id", False, AcceptTypes:={GetType(String), GetType(String())},
+    <Argument("/id", False, AcceptTypes:={GetType(String), GetType(String())},
                    Description:="The OMIM database entry id value. If this parameter is not represented, then the program will open the standard input as data source.(CLI pipeline mode), ortherwise program will accept this parameter value as ``seqID`` value.",
                    Example:="/id ""~/entries.txt""")>
-    <ParameterInfo("/out", True, AcceptTypes:={GetType(String)},
+    <Argument("/out", True, AcceptTypes:={GetType(String)},
                    Description:=CLI_output,
                    Example:="/out ""/home/xieguigang/query_result.json""")>
-    <ParameterInfo("/phenotypeExists", True, AcceptTypes:={GetType(Boolean)},
+    <Argument("/phenotypeExists", True, AcceptTypes:={GetType(Boolean)},
                    Description:=geneMap_phenotypeExists)>
     Public Function QueryGeneMaps_seqID(args As CommandLine) As Integer
         Dim seqid As String = args.ReadInput("/seqid")

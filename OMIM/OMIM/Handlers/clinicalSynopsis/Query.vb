@@ -1,4 +1,4 @@
-﻿Imports Microsoft.VisualBasic
+﻿Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 
 Namespace Handlers.clinicalSynopsis

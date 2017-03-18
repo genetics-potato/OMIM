@@ -48,7 +48,7 @@ Namespace Handlers
                 Select line.GetTagValue(":", trim:=True)
             Return LQuery.ToDictionary(
                 Function(x) x.Name.Trim,
-                Function(x) x.x)
+                Function(x) x.Value)
         End Function
 
         Public Overrides Function ToString() As String

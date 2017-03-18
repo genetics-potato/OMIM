@@ -32,7 +32,7 @@ Module CLI
     <ExportAPI("/Set.Key", Usage:="/Set.Key <key>",
                Info:="Setup the OMIM API key for query the database.",
                Example:="/Set.Key ""039583F9182AE1F7C343746B9B54C1F1BF1678A9""")>
-    <ParameterInfo("key", False,
+    <Argument("key", False,
                    AcceptTypes:={GetType(String)},
                    Description:="The api key of this OMIM query client.",
                    Example:="039583F9182AE1F7C343746B9B54C1F1BF1678A9")>

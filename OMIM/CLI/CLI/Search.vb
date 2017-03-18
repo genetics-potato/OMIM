@@ -9,7 +9,7 @@ Partial Module CLI
     <ExportAPI("/Search.entry",
                Info:="Search for OMIM entries by a specific term input.",
                Usage:="/Search.entry /term <search_term> [/filter <term> /fields <null> /sort <sort_options> /out <out_file|std_out> /start 0 /limit 10 /retrieve <geneMap|clinicalSynopsis,default:null>]")>
-    <ParameterInfo("/term", False,
+    <Argument("/term", False,
                    AcceptTypes:={GetType(String)},
                    Description:="The keyword for the searches.")>
     Public Function EntrySearch(args As CommandLine) As Integer

@@ -1,5 +1,5 @@
 ﻿Imports System.Text
-Imports Microsoft.VisualBasic
+Imports Microsoft.VisualBasic.Language
 
 Namespace Handlers.geneMap
 

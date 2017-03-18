@@ -1,5 +1,5 @@
 ﻿Imports System.ComponentModel
-Imports Microsoft.VisualBasic
+Imports Microsoft.VisualBasic.Language
 
 Namespace Handlers.search
 
