@@ -1,8 +1,10 @@
 ﻿Imports System.Xml.Serialization
 Imports Microsoft.VisualBasic.Serialization.JSON
+Imports Microsoft.VisualBasic.Text.Xml
 
 Namespace XML
 
+    <XmlRoot("drugbank", [Namespace]:="http://www.drugbank.ca")>
     Public Class Database
 
         <XmlAttribute>
@@ -17,7 +19,9 @@ Namespace XML
         End Function
 
         Public Shared Function Load(path$) As Database
-
+            Return path.LoadXml(Of Database)
+            '  Dim xml As New XmlDoc(path.ReadAllText)
+            '   xml.xmlns.xmlns =
         End Function
     End Class
 End Namespace
