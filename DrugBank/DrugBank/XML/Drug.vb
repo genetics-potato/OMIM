@@ -45,6 +45,10 @@ Namespace XML
         Public Property mixtures As mixture()
         Public Property packagers As packager()
         Public Property manufacturers As manufacturer()
+        ''' <summary>
+        ''' The price for the given drug in US or Canadian currency.
+        ''' </summary>
+        ''' <returns></returns>
         Public Property prices As price()
         Public Property categories As category()
         <XmlArray("affected-organisms")>

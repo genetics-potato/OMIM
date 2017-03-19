@@ -27,6 +27,9 @@ Namespace XML
         <XmlElement("mesh-id")> Public Property mesh_id As String
     End Class
 
+    ''' <summary>
+    ''' The price for the given drug in US or Canadian currency.
+    ''' </summary>
     Public Class price
         Public Property description As String
         Public Property cost As cost
@@ -59,6 +62,10 @@ Namespace XML
         Public Property labeller As String
         <XmlElement("ndc-id")> Public Property ndc_id As String
         <XmlElement("ndc-product-code")> Public Property ndc_product_code As String
+        ''' <summary>
+        ''' DPD ID from the Canadian Drug Product Database. Only present for drugs that are marketed in Canada.
+        ''' </summary>
+        ''' <returns></returns>
         <XmlElement("dpd-id")> Public Property dpd_id As String
         <XmlElement("started-marketing-on")> Public Property started_marketing_on As String
         <XmlElement("ended-marketing-on")> Public Property ended_marketing_on As String
