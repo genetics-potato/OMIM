@@ -142,7 +142,7 @@
       <Project>{cfe2bffa-32c6-4e60-9b19-bfa7387b8d92}</Project>
       <Name>Cosmic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DrugBank\DrugBank\DrugBank.vbproj">
+    <ProjectReference Include="..\DrugBank\DrugBank.vbproj">
       <Project>{db0548dc-d71d-4090-888a-07e249fde9de}</Project>
       <Name>DrugBank</Name>
     </ProjectReference>

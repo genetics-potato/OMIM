@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "runtime", "runtime", "{BF25
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CLI", "CLI\CLI.vbproj", "{F2A1294F-EBC7-4441-9C20-A6B75713BC9E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrugBank", "..\DrugBank\DrugBank\DrugBank.vbproj", "{DB0548DC-D71D-4090-888A-07E249FDE9DE}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrugBank", "..\DrugBank\DrugBank.vbproj", "{DB0548DC-D71D-4090-888A-07E249FDE9DE}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Test", "..\Test\Test.vbproj", "{8446F244-12C1-4E03-A706-C14FE81A5676}"
 EndProject
