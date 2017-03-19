@@ -43,6 +43,85 @@ LOCK TABLES `ascat_acf_ploidy` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `classification`
+--
+
+DROP TABLE IF EXISTS `classification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `classification` (
+  `Site_Primary` int(11) NOT NULL COMMENT 'Primary tissue specified in the publication.',
+  `Site_Subtype1` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in the publication.',
+  `Site_Subtype2` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in the publication.',
+  `Site_Subtype3` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in the publication.',
+  `Histology` varchar(45) DEFAULT NULL COMMENT 'Primary histology specified in the publication.',
+  `Hist_Subtype1` varchar(45) DEFAULT NULL COMMENT 'Sub histology specified in the publication.',
+  `Hist_Subtype2` varchar(45) DEFAULT NULL COMMENT 'Sub histology specified in the publication.',
+  `Hist_Subtype3` varchar(45) DEFAULT NULL COMMENT 'Sub histology specified in the publication.',
+  `Site_Primary_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Primary tissue specified in COSMIC.',
+  `Site_Subtype1_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in COSMIC.',
+  `Site_Subtype2_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in COSMIC.',
+  `Site_Subtype3_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in COSMIC.',
+  `Histology_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Primary histology specified in COSMIC.',
+  `Hist_Subtype1_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Sub histology specified in COSMIC.',
+  `Hist_Subtype2_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Sub histology specified in COSMIC.',
+  `Hist_Subtype3_COSMIC` varchar(45) DEFAULT NULL COMMENT 'Sub histology specified in COSMIC.',
+  PRIMARY KEY (`Site_Primary`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A comma separated table of COSMIC cancer classification information. (classification).\nclassification.csv';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classification`
+--
+
+LOCK TABLES `classification` WRITE;
+/*!40000 ALTER TABLE `classification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `classification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `complete_differential_methylation`
+--
+
+DROP TABLE IF EXISTS `complete_differential_methylation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `complete_differential_methylation` (
+  `Study_ID` int(11) NOT NULL COMMENT 'The study Id for these data.',
+  `Id_Sample` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the TCGA.',
+  `Sample_name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the TCGA.',
+  `Id_tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the TCGA.',
+  `Primary_Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site_Subtype_1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site_Subtype_2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site_Subtype_3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary_Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology_Subtype_1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology_Subtype_2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology_Subtype_3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Fragment_Id` varchar(45) DEFAULT NULL COMMENT 'The unique probe Id for a specific CpG.',
+  `Genome_Version` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19',
+  `Chromosome` varchar(45) DEFAULT NULL COMMENT 'The chromosome location of the probe (1-22, X or Y).',
+  `Position` varchar(45) DEFAULT NULL COMMENT 'The genome location of the CpG targeted by the probe (1-based coordinates).',
+  `Gene_Name` varchar(45) DEFAULT NULL COMMENT 'The gene name (if the probe falls within the coding region of a COSMIC gene) or the probe annotation as descibed by Illumina.',
+  `Methylation` varchar(45) DEFAULT NULL COMMENT 'The methylation level; H (High, beta-value >0.8) or L (Low, beta-value < 0.2).',
+  `Avg_Beta_Value_Normal` varchar(45) DEFAULT NULL COMMENT 'The average beta-value across the normal population. The beta-value of the tumour must differ from this value by >0.5 to be considered a variant.',
+  `Beta_Value` varchar(45) DEFAULT NULL COMMENT 'The beta-value for the probe in the tumour sample. Only values >0.8 (High) or <0.2 (Low) are included.',
+  `Two_Sided_P_Value` varchar(45) DEFAULT NULL COMMENT 'The two sided p-value.',
+  PRIMARY KEY (`Study_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='TCGA Level 3 methylation data from the ICGC portal for the current release in a tab separated file. More information on the methylation data is available from here. (CosmicCompleteDifferentialMethylation).\nCosmicCompleteDifferentialMethylation.tsv';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `complete_differential_methylation`
+--
+
+LOCK TABLES `complete_differential_methylation` WRITE;
+/*!40000 ALTER TABLE `complete_differential_methylation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `complete_differential_methylation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gene_expression`
 --
 
@@ -239,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-19 21:35:10
+-- Dump completed on 2017-03-19 21:55:54
