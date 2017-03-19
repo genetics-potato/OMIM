@@ -55,6 +55,39 @@ CREATE TABLE `drug` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug`
+--
+
+LOCK TABLES `drug` WRITE;
+/*!40000 ALTER TABLE `drug` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reference`
+--
+
+DROP TABLE IF EXISTS `reference`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reference` (
+  `type` int(11) NOT NULL COMMENT '1. article\n2. textbook\n3. link',
+  `id` varchar(45) DEFAULT NULL COMMENT 'article -> pubmedID\ntextbook -> isbn\nlink -> url',
+  `title` varchar(45) DEFAULT NULL COMMENT 'article, textbook -> citation\nlink -> title',
+  PRIMARY KEY (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reference`
+--
+
+LOCK TABLES `reference` WRITE;
+/*!40000 ALTER TABLE `reference` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reference` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping events for database 'drugbank'
 --
 
@@ -71,4 +104,4 @@ CREATE TABLE `drug` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-19 10:06:24
+-- Dump completed on 2017-03-19 10:30:21

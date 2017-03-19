@@ -3,4 +3,4 @@ reflector --reflects -o ./mysql/ /namespace "mysql" /split --language=visualbasi
 
 REM copy ORM source code to project source code directory
 RD /S /Q "../DrugBank/mysql/"
-xcopy "./mysql/*.sql" "../DrugBank/mysql/" /s /h /d /y
+xcopy "./mysql/*.*" "../DrugBank/mysql" /s /h /d /y /e /f /i
