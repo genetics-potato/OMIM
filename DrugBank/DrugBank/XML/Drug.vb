@@ -13,12 +13,16 @@ Namespace XML
         Public Property description As String
         <XmlElement("cas-number")> Public Property CASNumber As String
         Public Property unii As String
+        <XmlElement("average-mass")>
+        Public Property averageMass As Double
+        <XmlElement("monoisotopic-mass")>
+        Public Property monoisotopicMass As Double
         Public Property state As String
         Public Property groups As Group()
         <XmlElement("general-references")>
         Public Property generalReferences As references
         <XmlElement("synthesis-references")>
-        Public Property synthesisReferences As references
+        Public Property synthesisReferences As String
         Public Property indication As String
         Public Property pharmacodynamics As String
         <XmlElement("mechanism-of-action")>
@@ -33,8 +37,11 @@ Namespace XML
         Public Property volume_of_distribution As String
         Public Property clearance As String
         Public Property classification As classification
+        Public Property salts As salt()
         Public Property synonyms As synonym()
         Public Property products As product()
+        <XmlArray("international-brands")>
+        Public Property internationalBrands As internationalBrand()
         Public Property mixtures As mixture()
         Public Property packagers As packager()
         Public Property manufacturers As manufacturer()
@@ -64,6 +71,15 @@ Namespace XML
         Public Property targets As target()
         <XmlArray("external-links")>
         Public Property externalLinks As externalLink()
+
+    End Class
+
+    <XmlType("international-brand")>
+    Public Class internationalBrand
+
+    End Class
+
+    Public Class salt
 
     End Class
 
