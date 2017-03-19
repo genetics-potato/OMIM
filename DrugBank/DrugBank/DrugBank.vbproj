@@ -94,6 +94,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XML\pathway.vb" />
+    <Compile Include="XML\Reference.vb" />
     <Compile Include="XML\target.vb" />
     <Compile Include="XML\objects.vb" />
     <Compile Include="XML\Drug.vb" />

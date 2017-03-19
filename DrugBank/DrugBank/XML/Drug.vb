@@ -15,6 +15,10 @@ Namespace XML
         Public Property unii As String
         Public Property state As String
         Public Property groups As Group()
+        <XmlElement("general-references")>
+        Public Property generalReferences As references
+        <XmlElement("synthesis-references")>
+        Public Property synthesisReferences As references
         Public Property indication As String
         Public Property pharmacodynamics As String
         <XmlElement("mechanism-of-action")>
@@ -38,6 +42,16 @@ Namespace XML
         Public Property categories As category()
         <XmlArray("affected-organisms")>
         Public Property affected_organisms As affected_organism()
+        Public Property dosages As dosage()
+        <XmlArray("atc-codes")>
+        Public Property atcCodes As atcCode()
+        <XmlArray("ahfs-codes")>
+        Public Property ahfsCodes As ahfsCode()
+        <XmlArray("pdb-entries")>
+        Public Property pdbEntries As pdbEntry()
+        <XmlElement("fda-label")>
+        Public Property fdaLabel As String
+        Public Property msds As String
         <XmlArray("drug-interactions")>
         Public Property drug_interactions As DrugInteraction()
         Public Property patents As patent()
@@ -48,47 +62,50 @@ Namespace XML
         Public Property externalIdentifiers As externalIdentifier()
         Public Property pathways As pathway()
         Public Property targets As target()
+        <XmlArray("external-links")>
+        Public Property externalLinks As externalLink()
 
     End Class
 
-    Public Class pathway
-
-        <XmlElement("smpdb-id")>
-        Public Property smpdb_id As String
-        Public Property name As String
-        Public Property category As String
-        Public Property drugs As drug()
-        Public Property enzymes As enzyme()
-
-        Public Class drug
-            <XmlElement("drugbank-id")>
-            Public Property drugbankID As String
-            Public Property name As String
-        End Class
-    End Class
-
-    Public Class enzyme
-        <XmlElement("uniprot-id")>
-        Public Property uniprotID As String
-    End Class
-
-    <XmlType("external-identifier")>
-    Public Class externalIdentifier
+    <XmlType("external-link")>
+    Public Class externalLink
         Public Property resource As String
-        Public Property identifier As String
+        Public Property url As String
     End Class
 
-    Public Class [property]
-        Public Property kind As String
-        Public Property value As String
-        Public Property source As String
-    End Class
-
-    Public Class sequence
-        <XmlAttribute>
-        Public Property format As String
+    <XmlType("pdn-entry")>
+    Public Class pdbEntry
         <XmlText>
-        Public Property sequence As String
+        Public Property entryID As String
+    End Class
+
+    <XmlType("ahfs-code")>
+    Public Class ahfsCode
+        <XmlText>
+        Public Property code As String
+    End Class
+
+    <XmlType("atc-code")>
+    Public Class atcCode
+
+        <XmlAttribute>
+        Public Property code As String
+        <XmlElement("level")>
+        Public Property levels As level()
+
+    End Class
+
+    Public Class level
+
+        <XmlAttribute>
+        Public Property code As String
+        Public Property value As String
+    End Class
+
+    Public Class dosage
+        Public Property form As String
+        Public Property route As String
+        Public Property strength As String
     End Class
 
     Public Class patent

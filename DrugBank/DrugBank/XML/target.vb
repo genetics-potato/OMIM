@@ -26,7 +26,15 @@ Namespace XML
         <XmlElement("cellular-location")> Public Property cellularLocation As String
         <XmlElement("transmembrane-regions")> Public Property transmembraneRegions As String
         <XmlElement("signal-regions")> Public Property signalRegions As String
-        <XmlArray("external-identifiers")> Public Property externalIdentifiers As externalIdentifier()
+        <XmlElement("theoretical-pi")>
+        Public Property theoreticalPI As String
+        <XmlElement("molecular-weight")>
+        Public Property molecularWeight As String
+        <XmlElement("chromosome-location")>
+        Public Property chromosomeLocation As String
+        Public Property organism As organism
+        <XmlArray("external-identifiers")>
+        Public Property externalIdentifiers As externalIdentifier()
         Public Property synonyms As synonym()
         <XmlElement("amino-acid-sequence")> Public Property AA As sequence
         <XmlElement("gene-sequence")> Public Property NT As sequence
@@ -34,6 +42,13 @@ Namespace XML
         <XmlArray("go-classifiers")>
         Public Property goClassifiers As goClassifier()
 
+    End Class
+
+    Public Class organism
+        <XmlAttribute("ncbi-taxonomy-id")>
+        Public Property NCBItaxonomyID As String
+        <XmlText>
+        Public Property name As String
     End Class
 
     <XmlType("go-classifier")>
@@ -45,17 +60,6 @@ Namespace XML
     Public Class pfam
         Public Property identifier As String
         Public Property name As String
-    End Class
-
-    Public Class references
-        Public Property articles As article()
-    End Class
-
-    Public Class article
-
-        <XmlElement("pubmed-id")>
-        Public Property pubmedID As String
-        Public Property citation As String
     End Class
 
     Public Class action
