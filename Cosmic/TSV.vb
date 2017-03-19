@@ -3,6 +3,7 @@ Imports System.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Scripting
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
 Imports Oracle.LinuxCompatibility.MySQL
 Imports Oracle.LinuxCompatibility.MySQL.Reflection.Schema
@@ -40,9 +41,17 @@ Public Module TSV
                 Dim data$() = reader.ReadLine.Split(ASCII.TAB)
 
                 For Each field As NamedValue(Of PropertyInfo) In propWrites
-                    Dim s$ = data(index(field.Name))
-                    Dim v As Object = InputHandler.CTypeDynamic(s, field.Value.PropertyType)
-                    Call field.Value.SetValue(o, value:=v)
+                    Try
+                        Dim s$ = data(index(field.Name))
+                        Dim v As Object = InputHandler.CTypeDynamic(s, field.Value.PropertyType)
+                        Call field.Value.SetValue(o, value:=v)
+                    Catch ex As Exception
+                        ex = New Exception(data.GetJson, ex)
+                        Call App.LogException(ex)
+                        Call ex.PrintException
+
+                        Continue Do
+                    End Try
                 Next
 
                 Call sql.WriteLine(row.GetInsertSQL)
