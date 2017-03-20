@@ -75,6 +75,9 @@ Namespace XML
         Public Property targets As target()
         <XmlArray("external-links")>
         Public Property externalLinks As externalLink()
+        <XmlArray("snp-effects")>
+        Public Property snpEffects As snpEffect()
+        Public Property reactions As reaction()
 
     End Class
 

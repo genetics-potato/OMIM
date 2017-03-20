@@ -117,4 +117,21 @@ Namespace XML
             Return Me.GetJson
         End Function
     End Class
+
+    <XmlType("effect")> Public Class snpEffect
+        <XmlElement("protein-name")>
+        Public Property proteinName As String
+        <XmlElement("gene-symbol")>
+        Public Property geneSymbol As String
+        <XmlElement("uniprot-id")>
+        Public Property uniprotID As String
+        <XmlElement("rs-id")>
+        Public Property rsID As String
+        Public Property allele As String
+        <XmlElement("defining-change")>
+        Public Property definingChange As String
+        Public Property description As String
+        <XmlElement("pubmed-id")>
+        Public Property pubmedID As String
+    End Class
 End Namespace

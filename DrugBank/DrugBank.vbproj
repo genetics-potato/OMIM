@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="mysql\drug.vb" />
     <Compile Include="mysql\reference.vb" />
+    <Compile Include="XML\reactions.vb" />
     <Compile Include="XML\pathway.vb" />
     <Compile Include="XML\Reference.vb" />
     <Compile Include="XML\target.vb" />

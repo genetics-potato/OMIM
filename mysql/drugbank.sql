@@ -81,6 +81,22 @@ CREATE TABLE `drug_atc_code` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `drug_calculated_properties`
+--
+
+DROP TABLE IF EXISTS `drug_calculated_properties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `drug_calculated_properties` (
+  `drug` int(11) NOT NULL,
+  `kind` varchar(45) DEFAULT NULL,
+  `value` varchar(45) DEFAULT NULL,
+  `source` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`drug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `drug_category`
 --
 
@@ -304,6 +320,31 @@ CREATE TABLE `drug_products` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `drug_reactions`
+--
+
+DROP TABLE IF EXISTS `drug_reactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `drug_reactions` (
+  `drug` int(11) NOT NULL,
+  `sequence` varchar(45) DEFAULT NULL,
+  `left1` varchar(45) DEFAULT NULL,
+  `left2` varchar(45) DEFAULT NULL,
+  `left3` varchar(45) DEFAULT NULL,
+  `left4` varchar(45) DEFAULT NULL,
+  `left5` varchar(45) DEFAULT NULL,
+  `right1` varchar(45) DEFAULT NULL,
+  `right2` varchar(45) DEFAULT NULL,
+  `right3` varchar(45) DEFAULT NULL,
+  `right4` varchar(45) DEFAULT NULL,
+  `right5` varchar(45) DEFAULT NULL,
+  `enzymes` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`drug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `drug_snp_effects`
 --
 
@@ -492,4 +533,4 @@ CREATE TABLE `target_polypeptides` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-20 16:32:02
+-- Dump completed on 2017-03-20 16:54:15
