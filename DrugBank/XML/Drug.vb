@@ -79,6 +79,23 @@ Namespace XML
         Public Property snpEffects As snpEffect()
         Public Property reactions As reaction()
 
+        Public ReadOnly Property PrimaryID As String
+            Get
+                Dim primary As DrugBankID = drugbankIDs _
+                    .Where(Function(id) id.primary = True) _
+                    .FirstOrDefault
+                Return primary?.ID
+            End Get
+        End Property
+
+        Public ReadOnly Property OtherIDs As String()
+            Get
+                Return drugbankIDs _
+                    .Where(Function(id) Not id.primary) _
+                    .Select(Function(id) id.ID) _
+                    .ToArray
+            End Get
+        End Property
     End Class
 
     <XmlType("international-brand")>

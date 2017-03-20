@@ -91,6 +91,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Imports.vb" />
     <Compile Include="mysql\drug.vb" />
     <Compile Include="mysql\reference.vb" />
     <Compile Include="XML\reactions.vb" />
