@@ -57,6 +57,15 @@ CREATE TABLE `drug` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug`
+--
+
+LOCK TABLES `drug` WRITE;
+/*!40000 ALTER TABLE `drug` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_atc_code`
 --
 
@@ -81,6 +90,15 @@ CREATE TABLE `drug_atc_code` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_atc_code`
+--
+
+LOCK TABLES `drug_atc_code` WRITE;
+/*!40000 ALTER TABLE `drug_atc_code` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_atc_code` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_calculated_properties`
 --
 
@@ -97,6 +115,15 @@ CREATE TABLE `drug_calculated_properties` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_calculated_properties`
+--
+
+LOCK TABLES `drug_calculated_properties` WRITE;
+/*!40000 ALTER TABLE `drug_calculated_properties` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_calculated_properties` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_category`
 --
 
@@ -110,6 +137,15 @@ CREATE TABLE `drug_category` (
   PRIMARY KEY (`drug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_category`
+--
+
+LOCK TABLES `drug_category` WRITE;
+/*!40000 ALTER TABLE `drug_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_category` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `drug_classification`
@@ -131,6 +167,15 @@ CREATE TABLE `drug_classification` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_classification`
+--
+
+LOCK TABLES `drug_classification` WRITE;
+/*!40000 ALTER TABLE `drug_classification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_classification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_dosage`
 --
 
@@ -145,6 +190,15 @@ CREATE TABLE `drug_dosage` (
   PRIMARY KEY (`drug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_dosage`
+--
+
+LOCK TABLES `drug_dosage` WRITE;
+/*!40000 ALTER TABLE `drug_dosage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_dosage` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `drug_experimental_properties`
@@ -163,6 +217,15 @@ CREATE TABLE `drug_experimental_properties` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_experimental_properties`
+--
+
+LOCK TABLES `drug_experimental_properties` WRITE;
+/*!40000 ALTER TABLE `drug_experimental_properties` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_experimental_properties` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_external_identifiers`
 --
 
@@ -178,6 +241,15 @@ CREATE TABLE `drug_external_identifiers` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_external_identifiers`
+--
+
+LOCK TABLES `drug_external_identifiers` WRITE;
+/*!40000 ALTER TABLE `drug_external_identifiers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_external_identifiers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_external_links`
 --
 
@@ -191,6 +263,15 @@ CREATE TABLE `drug_external_links` (
   PRIMARY KEY (`drug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_external_links`
+--
+
+LOCK TABLES `drug_external_links` WRITE;
+/*!40000 ALTER TABLE `drug_external_links` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_external_links` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `drug_interactions`
@@ -209,6 +290,15 @@ CREATE TABLE `drug_interactions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_interactions`
+--
+
+LOCK TABLES `drug_interactions` WRITE;
+/*!40000 ALTER TABLE `drug_interactions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_interactions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_manufacturers`
 --
 
@@ -225,6 +315,39 @@ CREATE TABLE `drug_manufacturers` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_manufacturers`
+--
+
+LOCK TABLES `drug_manufacturers` WRITE;
+/*!40000 ALTER TABLE `drug_manufacturers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_manufacturers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `drug_mixtures`
+--
+
+DROP TABLE IF EXISTS `drug_mixtures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `drug_mixtures` (
+  `drug` int(11) NOT NULL,
+  `mixture_name` varchar(45) DEFAULT NULL,
+  `ingredients` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`drug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_mixtures`
+--
+
+LOCK TABLES `drug_mixtures` WRITE;
+/*!40000 ALTER TABLE `drug_mixtures` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_mixtures` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_packagers`
 --
 
@@ -238,6 +361,15 @@ CREATE TABLE `drug_packagers` (
   PRIMARY KEY (`drug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_packagers`
+--
+
+LOCK TABLES `drug_packagers` WRITE;
+/*!40000 ALTER TABLE `drug_packagers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_packagers` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `drug_patents`
@@ -258,6 +390,15 @@ CREATE TABLE `drug_patents` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_patents`
+--
+
+LOCK TABLES `drug_patents` WRITE;
+/*!40000 ALTER TABLE `drug_patents` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_patents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_pathways`
 --
 
@@ -275,6 +416,15 @@ CREATE TABLE `drug_pathways` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_pathways`
+--
+
+LOCK TABLES `drug_pathways` WRITE;
+/*!40000 ALTER TABLE `drug_pathways` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_pathways` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_price`
 --
 
@@ -286,9 +436,19 @@ CREATE TABLE `drug_price` (
   `description` varchar(45) DEFAULT NULL,
   `cost` varchar(45) DEFAULT NULL,
   `unit` varchar(45) DEFAULT NULL,
+  `currency` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`drug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_price`
+--
+
+LOCK TABLES `drug_price` WRITE;
+/*!40000 ALTER TABLE `drug_price` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_price` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `drug_products`
@@ -320,6 +480,15 @@ CREATE TABLE `drug_products` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_products`
+--
+
+LOCK TABLES `drug_products` WRITE;
+/*!40000 ALTER TABLE `drug_products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_reactions`
 --
 
@@ -345,6 +514,15 @@ CREATE TABLE `drug_reactions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_reactions`
+--
+
+LOCK TABLES `drug_reactions` WRITE;
+/*!40000 ALTER TABLE `drug_reactions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_reactions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_snp_effects`
 --
 
@@ -366,6 +544,15 @@ CREATE TABLE `drug_snp_effects` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_snp_effects`
+--
+
+LOCK TABLES `drug_snp_effects` WRITE;
+/*!40000 ALTER TABLE `drug_snp_effects` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_snp_effects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `drug_synonym`
 --
 
@@ -380,6 +567,15 @@ CREATE TABLE `drug_synonym` (
   PRIMARY KEY (`drug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drug_synonym`
+--
+
+LOCK TABLES `drug_synonym` WRITE;
+/*!40000 ALTER TABLE `drug_synonym` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_synonym` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `drug_targets`
@@ -401,6 +597,15 @@ CREATE TABLE `drug_targets` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `drug_targets`
+--
+
+LOCK TABLES `drug_targets` WRITE;
+/*!40000 ALTER TABLE `drug_targets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `drug_targets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pathway_drugs`
 --
 
@@ -416,6 +621,15 @@ CREATE TABLE `pathway_drugs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `pathway_drugs`
+--
+
+LOCK TABLES `pathway_drugs` WRITE;
+/*!40000 ALTER TABLE `pathway_drugs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pathway_drugs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `polypeptide_external_ids`
 --
 
@@ -429,6 +643,15 @@ CREATE TABLE `polypeptide_external_ids` (
   PRIMARY KEY (`polypeptide`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `polypeptide_external_ids`
+--
+
+LOCK TABLES `polypeptide_external_ids` WRITE;
+/*!40000 ALTER TABLE `polypeptide_external_ids` DISABLE KEYS */;
+/*!40000 ALTER TABLE `polypeptide_external_ids` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `polypeptide_sequences`
@@ -448,6 +671,15 @@ CREATE TABLE `polypeptide_sequences` (
   PRIMARY KEY (`polypeptide`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='polypeptide sequence data and function annotations';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `polypeptide_sequences`
+--
+
+LOCK TABLES `polypeptide_sequences` WRITE;
+/*!40000 ALTER TABLE `polypeptide_sequences` DISABLE KEYS */;
+/*!40000 ALTER TABLE `polypeptide_sequences` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `polypeptide_synonyms`
@@ -473,6 +705,15 @@ CREATE TABLE `polypeptide_synonyms` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `polypeptide_synonyms`
+--
+
+LOCK TABLES `polypeptide_synonyms` WRITE;
+/*!40000 ALTER TABLE `polypeptide_synonyms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `polypeptide_synonyms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `reference`
 --
 
@@ -486,6 +727,15 @@ CREATE TABLE `reference` (
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reference`
+--
+
+LOCK TABLES `reference` WRITE;
+/*!40000 ALTER TABLE `reference` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reference` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `target_polypeptides`
@@ -517,6 +767,15 @@ CREATE TABLE `target_polypeptides` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `target_polypeptides`
+--
+
+LOCK TABLES `target_polypeptides` WRITE;
+/*!40000 ALTER TABLE `target_polypeptides` DISABLE KEYS */;
+/*!40000 ALTER TABLE `target_polypeptides` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping events for database 'drugbank'
 --
 
@@ -533,4 +792,4 @@ CREATE TABLE `target_polypeptides` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-20 16:54:15
+-- Dump completed on 2017-03-22 17:01:56

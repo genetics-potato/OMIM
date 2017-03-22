@@ -67,6 +67,8 @@ Namespace XML
         Public Property drug_interactions As DrugInteraction()
         Public Property patents As patent()
         Public Property sequences As sequence()
+        <XmlArray("calculated-properties")>
+        Public Property calculated_properties As [property]()
         <XmlArray("experimental-properties")>
         Public Property experimentalProperties As [property]()
         <XmlArray("external-identifiers")>

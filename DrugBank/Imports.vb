@@ -24,6 +24,9 @@ Public Module [Imports]
         Dim drugClassification As New List(Of mysql.drug_classification)
         Dim drugProducts As New List(Of mysql.drug_products)
         Dim drugSynonyms As New List(Of mysql.drug_synonym)
+        Dim drugMixtures As New List(Of mysql.drug_mixtures)
+        Dim drugCatagory As New List(Of mysql.drug_category)
+        Dim drugprices As New List(Of mysql.drug_price)
 
         For Each d As XML.Drug In fullData.drugs
             drugs += New mysql.drug With {
@@ -54,6 +57,9 @@ Public Module [Imports]
                 .volume_of_distribution = d.volume_of_distribution
             }
 
+            drugCatagory += d.DrugCategory
+            drugprices += d.DrugPrices
+            drugMixtures += d.DrugMixtures
             drugSynonyms += d.DrugSynonyms
             drugProducts += d.DrugProducts
             drugClassification += d.DrugClassification
@@ -65,7 +71,53 @@ Public Module [Imports]
 
         Call references.DumpTransaction(save)
         Call drugs.DumpTransaction(save)
+        Call drugATCCodes.DumpTransaction(save)
+        Call drugCalculatedProperties.DumpTransaction(save)
+        Call drugInteractions.DumpTransaction(save)
+        Call drugClassification.DumpTransaction(save)
+        Call drugProducts.DumpTransaction(save)
+        Call drugSynonyms.DumpTransaction(save)
+        Call drugMixtures.DumpTransaction(save)
+        Call drugCatagory.DumpTransaction(save)
+        Call drugprices.DumpTransaction(save)
     End Sub
+
+    <Extension>
+    Public Function DrugPrices(drug As XML.Drug) As mysql.drug_price()
+        Return drug.prices.Select(Function(pr)
+                                      Return New mysql.drug_price With {
+                                          .drug = drug.PrimaryID,
+                                          .cost = pr.cost.value,
+                                          .description = pr.description,
+                                          .unit = pr.unit,
+                                          .currency = pr.cost.currency
+                                      }
+                                  End Function).ToArray
+    End Function
+
+    <Extension>
+    Public Function DrugCategory(drug As XML.Drug) As mysql.drug_category()
+        Return drug.categories _
+            .Select(Function(c)
+                        Return New mysql.drug_category With {
+                            .drug = drug.PrimaryID,
+                            .category = c.category,
+                            .mesh_id = c.mesh_id
+                        }
+                    End Function).ToArray
+    End Function
+
+    <Extension>
+    Public Function DrugMixtures(drug As XML.Drug) As mysql.drug_mixtures()
+        Return drug.mixtures _
+            .Select(Function(m)
+                        Return New mysql.drug_mixtures With {
+                            .drug = drug.PrimaryID,
+                            .ingredients = m.ingredients,
+                            .mixture_name = m.name
+                        }
+                    End Function).ToArray
+    End Function
 
     <Extension>
     Public Function DrugSynonyms(drug As XML.Drug) As mysql.drug_synonym()
@@ -135,7 +187,14 @@ Public Module [Imports]
 
     <Extension>
     Public Function DrugCalculatedProperties(drug As XML.Drug) As mysql.drug_calculated_properties()
-
+        Return drug.calculated_properties.Select(Function(c)
+                                                     Return New mysql.drug_calculated_properties With {
+                                                        .drug = drug.PrimaryID,
+                                                        .kind = c.kind,
+                                                        .source = c.source,
+                                                        .value = c.value
+                                                     }
+                                                 End Function).ToArray
     End Function
 
     <Extension>

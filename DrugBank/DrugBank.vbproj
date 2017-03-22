@@ -103,6 +103,7 @@
     <Compile Include="mysql\drug_external_links.vb" />
     <Compile Include="mysql\drug_interactions.vb" />
     <Compile Include="mysql\drug_manufacturers.vb" />
+    <Compile Include="mysql\drug_mixtures.vb" />
     <Compile Include="mysql\drug_packagers.vb" />
     <Compile Include="mysql\drug_patents.vb" />
     <Compile Include="mysql\drug_pathways.vb" />
