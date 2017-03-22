@@ -18,6 +18,12 @@ Public Module [Imports]
         Dim fullData As XML.Database = XML.Database.Load(fullXML)
         Dim drugs As New List(Of mysql.drug)
         Dim references As New List(Of mysql.reference)
+        Dim drugATCCodes As New List(Of mysql.drug_atc_code)
+        Dim drugCalculatedProperties As New List(Of mysql.drug_calculated_properties)
+        Dim drugInteractions As New List(Of mysql.drug_interactions)
+        Dim drugClassification As New List(Of mysql.drug_classification)
+        Dim drugProducts As New List(Of mysql.drug_products)
+        Dim drugSynonyms As New List(Of mysql.drug_synonym)
 
         For Each d As XML.Drug In fullData.drugs
             drugs += New mysql.drug With {
@@ -48,12 +54,112 @@ Public Module [Imports]
                 .volume_of_distribution = d.volume_of_distribution
             }
 
+            drugSynonyms += d.DrugSynonyms
+            drugProducts += d.DrugProducts
+            drugClassification += d.DrugClassification
+            drugInteractions += d.DrugInteractions
+            drugCalculatedProperties += d.DrugCalculatedProperties
+            drugATCCodes += d.DrugATCCodes
             references += d.generalReferences.ToReferenceList
         Next
 
         Call references.DumpTransaction(save)
         Call drugs.DumpTransaction(save)
     End Sub
+
+    <Extension>
+    Public Function DrugSynonyms(drug As XML.Drug) As mysql.drug_synonym()
+        Return drug.synonyms _
+            .Select(Function(s)
+                        Return New mysql.drug_synonym With {
+                            .coder = s.coder,
+                            .drug = drug.PrimaryID,
+                            .language = s.language,
+                            .synonym = s.value
+                        }
+                    End Function).ToArray
+    End Function
+
+    <Extension>
+    Public Function DrugProducts(drug As XML.Drug) As mysql.drug_products()
+        Return drug.products _
+            .Select(Function(p)
+                        Return New mysql.drug_products With {
+                            .drug = drug.PrimaryID,
+                            .approved = p.approved,
+                            .country = p.country,
+                            .dosage_form = p.dosage_form,
+                            .dpd_id = p.dpd_id,
+                            .ended_marketting_on = p.ended_marketing_on,
+                            .fda_application_number = p.fda_application_number,
+                            .generic = p.generic,
+                            .labeller = p.labeller,
+                            .name = p.name,
+                            .ndc_id = p.ndc_id,
+                            .ndc_product_code = p.ndc_product_code,
+                            .over_the_counter = p.over_the_counter,
+                            .route = p.route,
+                            .source = p.source,
+                            .start_marketing_on = p.started_marketing_on,
+                            .strength = p.strength
+                        }
+                    End Function).ToArray
+    End Function
+
+    <Extension>
+    Public Function DrugClassification(drug As XML.Drug) As mysql.drug_classification
+        Dim c = drug.classification
+        Return New mysql.drug_classification With {
+            .drug = drug.PrimaryID,
+            .class = c.class,
+            .description = c.description,
+            .direct_parent = c.directParent,
+            .kingdom = c.kingdom,
+            .subclass = c.subclass,
+            .superclass = c.superclass
+        }
+    End Function
+
+    <Extension>
+    Public Function DrugInteractions(drug As XML.Drug) As mysql.drug_interactions()
+        Return drug.drug_interactions.SafeQuery _
+            .Select(Function(i)
+                        Return New mysql.drug_interactions With {
+                            .drug = drug.PrimaryID,
+                            .partner = i.drugbankID,
+                            .partner_description = i.description,
+                            .partner_name = i.name
+                        }
+                    End Function).ToArray
+    End Function
+
+    <Extension>
+    Public Function DrugCalculatedProperties(drug As XML.Drug) As mysql.drug_calculated_properties()
+
+    End Function
+
+    <Extension>
+    Public Function DrugATCCodes(drug As XML.Drug) As mysql.drug_atc_code()
+        Return drug.atcCodes.SafeQuery.Select(
+            Function(code)
+                Dim levels = code.levels.OrderBy(Function(l) l.code.Length).ToArray
+
+                Return New mysql.drug_atc_code With {
+                    .code = code.code,
+                    .drug = drug.PrimaryID,
+                    .level1_code = levels(0).code,
+                    .level1_description = levels(0).value,
+                    .level2_code = levels(1).code,
+                    .level2_description = levels(1).value,
+                    .level3_code = levels(2).code,
+                    .level3_description = levels(2).value,
+                    .level4_code = levels(3).code,
+                    .level4_description = levels(3).value,
+                    .level5_code = levels.Get(4)?.code,
+                    .level5_description = levels.Get(4)?.value
+                }
+            End Function).ToArray
+    End Function
 
     <Extension>
     Public Function ToReferenceList(ref As XML.references) As mysql.reference()
