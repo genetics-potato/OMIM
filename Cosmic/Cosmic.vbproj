@@ -85,8 +85,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="mysql\ascat_acf_ploidy.vb" />
+    <Compile Include="mysql\cancer_gene_census.vb" />
     <Compile Include="mysql\classification.vb" />
     <Compile Include="mysql\complete_differential_methylation.vb" />
+    <Compile Include="mysql\cosmic_breakpoints_export.vb" />
+    <Compile Include="mysql\cosmic_complete_cna.vb" />
+    <Compile Include="mysql\cosmic_complete_targeted_screens_mutant_export.vb" />
+    <Compile Include="mysql\cosmic_fusion_export.vb" />
+    <Compile Include="mysql\cosmic_genome_screens_mutant_export.vb" />
+    <Compile Include="mysql\cosmic_mutant_export.vb" />
+    <Compile Include="mysql\cosmic_mutant_export_census.vb" />
+    <Compile Include="mysql\cosmic_ncv.vb" />
+    <Compile Include="mysql\cosmic_struct_export.vb" />
     <Compile Include="mysql\hgnc.vb" />
     <Compile Include="mysql\resistance_mutations.vb" />
     <Compile Include="mysql\sample_features.vb" />
