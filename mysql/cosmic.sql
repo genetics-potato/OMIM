@@ -27,20 +27,41 @@ DROP TABLE IF EXISTS `ascat_acf_ploidy`;
 CREATE TABLE `ascat_acf_ploidy` (
   `Cancer_Type_Code` int(11) NOT NULL COMMENT 'The disease code (decode available from https://tcga-data.nci.nih.gov/datareports/codeTablesReport.htm).',
   `Sample` varchar(45) DEFAULT NULL COMMENT 'The name of the sample.',
-  `Aberrant_Cell_Fraction_Purity` varchar(45) DEFAULT NULL COMMENT 'The aberrant cell fraction (purity estimate).',
+  `Aberrant_Cell_Fraction(Purity)` varchar(45) DEFAULT NULL COMMENT 'The aberrant cell fraction (purity estimate).',
   `Ploidy` varchar(45) DEFAULT NULL COMMENT 'The ploidy of the genome.',
   PRIMARY KEY (`Cancer_Type_Code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A tab separated file listing the ploidy and aberrant cell fraction (purity estimate), for TCGA samples re-analysed using ASCAT. (ascat_acf_ploidy).\nascat_acf_ploidy.tsv';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ascat_acf_ploidy`
+-- Table structure for table `cancer_gene_census`
 --
 
-LOCK TABLES `ascat_acf_ploidy` WRITE;
-/*!40000 ALTER TABLE `ascat_acf_ploidy` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ascat_acf_ploidy` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `cancer_gene_census`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cancer_gene_census` (
+  `Gene Symbol` int(11) NOT NULL,
+  `Name` varchar(45) DEFAULT NULL,
+  `Entrez GeneId` varchar(45) DEFAULT NULL,
+  `Genome Location` varchar(45) DEFAULT NULL,
+  `Chr Band` varchar(45) DEFAULT NULL,
+  `Somatic` varchar(45) DEFAULT NULL,
+  `Germline` varchar(45) DEFAULT NULL,
+  `Tumour Types(Somatic)` varchar(45) DEFAULT NULL,
+  `Tumour Types(Germline)` varchar(45) DEFAULT NULL,
+  `Cancer Syndrome` varchar(45) DEFAULT NULL,
+  `Tissue Type` varchar(45) DEFAULT NULL,
+  `Molecular Genetics` varchar(45) DEFAULT NULL,
+  `Role in Cancer` varchar(45) DEFAULT NULL,
+  `Mutation Types` varchar(45) DEFAULT NULL,
+  `Translocation Partner` varchar(45) DEFAULT NULL,
+  `Other Germline Mut` varchar(45) DEFAULT NULL,
+  `Other Syndrome` varchar(45) DEFAULT NULL,
+  `Synonyms` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Gene Symbol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='cancer_gene_census.csv\n\nA list of all cancer census genes from the current release in a comma separated file. This file is exported from here and the format is the same. (cancer_gene_census).';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `classification`
@@ -69,15 +90,6 @@ CREATE TABLE `classification` (
   PRIMARY KEY (`Site_Primary`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A comma separated table of COSMIC cancer classification information. (classification).\nclassification.csv';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `classification`
---
-
-LOCK TABLES `classification` WRITE;
-/*!40000 ALTER TABLE `classification` DISABLE KEYS */;
-/*!40000 ALTER TABLE `classification` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `complete_differential_methylation`
@@ -113,13 +125,343 @@ CREATE TABLE `complete_differential_methylation` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `complete_differential_methylation`
+-- Table structure for table `cosmic_breakpoints_export`
 --
 
-LOCK TABLES `complete_differential_methylation` WRITE;
-/*!40000 ALTER TABLE `complete_differential_methylation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `complete_differential_methylation` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `cosmic_breakpoints_export`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_breakpoints_export` (
+  `Sample name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Mutation Type` varchar(45) DEFAULT NULL COMMENT 'Type of mutation : Intra/Inter (chromosomal), tandem duplication, deletion, inversion, complex substitutions, complex amplicons.',
+  `Mutation Id` varchar(45) DEFAULT NULL COMMENT 'unique mutation identifier.',
+  `Breakpoint Order` varchar(45) DEFAULT NULL COMMENT 'For variants involving multiple breakpoints, the predicted order along chromosome(s).Otherwise ''0''.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19     ',
+  `Chrom From` varchar(45) DEFAULT NULL COMMENT 'The chromosome where the first variant/breakpoint occurs.',
+  `Location From min` varchar(45) DEFAULT NULL COMMENT 'The first position in breakpoint range.',
+  `Location From max` varchar(45) DEFAULT NULL COMMENT 'The last position in breakpoint range.',
+  `Strand From` varchar(45) DEFAULT NULL COMMENT 'positive or negative.',
+  `Chrom To` varchar(45) DEFAULT NULL COMMENT 'The chromosome where the last variant/breakpoint occurs.',
+  `Location To min` varchar(45) DEFAULT NULL COMMENT 'The first position in breakpoint range.',
+  `Location To max` varchar(45) DEFAULT NULL COMMENT 'The last position in breakpoint range.',
+  `Strand To` varchar(45) DEFAULT NULL COMMENT 'positive or negative.',
+  `Non-templated ins seq` varchar(45) DEFAULT NULL COMMENT 'Non Templated Sequence (if any) which is inserted at the breakpoint. The sequence is not encoded.',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this structural mutation.',
+  PRIMARY KEY (`Sample name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicBreakpointsExport.tsv\n\nAll breakpoint data from the current release in a tab separated file (CosmicBreakpointsExport).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_complete_cna`
+--
+
+DROP TABLE IF EXISTS `cosmic_complete_cna`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_complete_cna` (
+  `CNV_ID` int(11) NOT NULL COMMENT 'The unique identifier for the variant (not stable, differs between releases).',
+  `Id gene` varchar(45) DEFAULT NULL COMMENT 'The ID and symbol of the gene which overlaps the copy number segment (or ''-'' where there is no overlapping gene).',
+  `Gene name` varchar(45) DEFAULT NULL COMMENT 'The ID and symbol of the gene which overlaps the copy number segment (or ''-'' where there is no overlapping gene).',
+  `Sample id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
+  `Id tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Sample Name` varchar(45) DEFAULT NULL COMMENT 'The name of the sample.',
+  `Total_CN` varchar(45) DEFAULT NULL COMMENT 'The sum of the major and minor allele counts eg if ABB, total copy number = 3.',
+  `Minor Allele` varchar(45) DEFAULT NULL COMMENT 'The number of copies of the least frequent allele eg if ABB, minor allele = A ( 1 copy) and major allele = B ( 2 copies).',
+  `Mut Type` varchar(45) DEFAULT NULL COMMENT 'Defined as Gain or Loss. For ICGC samples; as defined in the original data. For TCGA samples reanalysed with ASCAT -\n\n        GAIN = average genome ploidy <= 2.7 AND total copy number >= 5 OR average genome ploidy > 2.7 AND total copy number >= 9\n        LOSS = average genome ploidy <= 2.7 AND total copy number = 0 OR average ge',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this copy number variation.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19     ',
+  `Chromosome:G_Start..G_Stop` varchar(45) DEFAULT NULL COMMENT 'The genomic coordinates of the variation.',
+  PRIMARY KEY (`CNV_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicCompleteCNA.tsv\n\nCopy Number Variants\n\nAll copy number abberations from the current release in a tab separated file. For more information on copy number data, please see here. (CosmicCompleteCNA).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_complete_targeted_screens_mutant_export`
+--
+
+DROP TABLE IF EXISTS `cosmic_complete_targeted_screens_mutant_export`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_complete_targeted_screens_mutant_export` (
+  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC symbol.',
+  `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
+  `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
+  `HGNC id` varchar(45) DEFAULT NULL COMMENT 'Unique HGNC identifier, if the gene is in HGNC.',
+  `Sample name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Id tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Genome-wide screen` varchar(45) DEFAULT NULL COMMENT 'if the enitre genome/exome is sequenced.',
+  `Mutation Id` varchar(45) DEFAULT NULL COMMENT 'unique mutation identifier.',
+  `Mutation CDS` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the nucleotide sequence. Formatting is identical to the method used for the peptide sequence.',
+  `Mutation AA` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the peptide sequence. Formatting is based on the recommendations made by the Human Genome Variation Society. The description of each type can be found by following the link to Mutation Overview page.',
+  `Mutation Description` varchar(45) DEFAULT NULL COMMENT 'Type of mutation (substitution, deletion, insertion, complex, fusion, unknown etc.)',
+  `Mutation zygosity` varchar(45) DEFAULT NULL COMMENT 'Information on whether the mutation was reported to be homozygous , heterozygous or unknown within the sample.',
+  `LOH` varchar(45) DEFAULT NULL COMMENT 'LOH Information on whether the gene was reported to have loss of heterozygosity in the sample: yes, no or unknown.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19   ',
+  `Mutation genome position` varchar(45) DEFAULT NULL COMMENT 'The genomic cooridnates of the mutation.',
+  `Mutation strand` varchar(45) DEFAULT NULL COMMENT 'Positive or negative.',
+  `SNP` varchar(45) DEFAULT NULL COMMENT 'All the known SNPs are flagged as ''y'' defined by the 1000 genomes project, dbSNP and a panel of 378 normal (non-cancer) samples from Sanger CGP sequencing.',
+  `Resistance Mutation` varchar(45) DEFAULT NULL COMMENT 'The mutation confers drug resistance (see CosmicResistanceMutations.tsv.gz for gene/drug details).',
+  `FATHMM prediction` varchar(45) DEFAULT NULL COMMENT 'More information about FATHMM (Functional Analysis through Hidden Markov Models) is available from here. FATHMM descriptors -\n\n        Pathogenic = Defined as Cancer or Damaging.\n        Neutral = Defined as Passenger or Tolerated.  ',
+  `FATHMM Score` varchar(45) DEFAULT NULL COMMENT 'The scores are in the form of pvalues ranging from 0 to 1. Pvalues greater than 0.5 are pathogenic while less than 0.5 are benign. Pvalues close to 0 or 1 are the high confidence results which are more accurate. The results are annotated as 10 feature groups (separately for coding and non coding variants) details of which can be found in the original FATHMM-MKL paper.',
+  `Mutation somatic status` varchar(45) DEFAULT NULL COMMENT 'Information on whether the sample was reported to be Confirmed Somatic, Previously Reported or Variant of unknown origin -\n\n        variant of unknown origin = when the mutation is known to be somatic but the tumour was sequenced without a matched normal.\n        Confirmed Somatic = if the mutation has been confimed to be somatic in the experiment by sequencing both the tumour and a matched normal from the same patient.\n        Previously observed = when the mutation has been reported as somatic previously but not in current paper.',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in, linking to pubmed to provide more details of the publication.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this sample.',
+  `Sample source` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Tumour origin` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Age` varchar(45) DEFAULT NULL COMMENT 'Age of the individual (if this information is provided with the publications).',
+  PRIMARY KEY (`Gene name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicCompleteTargetedScreensMutantExport.tsv\n\nCOSMIC Complete Mutation Data (Targeted Screens)\n\nA tab separated table of the complete curated COSMIC dataset (targeted screens) from the current release. It includes all coding point mutations, and the negative data set. (CosmicCompleteTargetedScreensMutantExport).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_fusion_export`
+--
+
+DROP TABLE IF EXISTS `cosmic_fusion_export`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_fusion_export` (
+  `Sample id` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Fusion Id` varchar(45) DEFAULT NULL COMMENT 'Unique fusion mutation identifier.',
+  `Translocation Name` varchar(45) DEFAULT NULL COMMENT 'Syntax describing the portions of mRNA present (in HGVS ''r.'' format) from each gene (allows representation of UTR sequences).',
+  `Fusion type` varchar(45) DEFAULT NULL COMMENT 'Type of mutation.',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this fusion mutation.',
+  PRIMARY KEY (`Sample id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicFusionExport.tsv\n\nComplete Fusion Export\n\nAll gene fusion mutation data from the current release in a tab separated file. (CosmicFusionExport).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_genome_screens_mutant_export`
+--
+
+DROP TABLE IF EXISTS `cosmic_genome_screens_mutant_export`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_genome_screens_mutant_export` (
+  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
+  `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
+  `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
+  `HGNC id` varchar(45) DEFAULT NULL COMMENT 'Unique HGNC identifier, if the gene is in HGNC.',
+  `Sample name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Id tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Genome-wide screen` varchar(45) DEFAULT NULL COMMENT 'if the enitre genome/exome is sequenced.',
+  `Mutation Id` varchar(45) DEFAULT NULL COMMENT 'unique mutation identifier.',
+  `Mutation CDS` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the nucleotide sequence. Formatting is identical to the method used for the peptide sequence.',
+  `Mutation AA` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the peptide sequence. Formatting is based on the recommendations made by the Human Genome Variation Society. The description of each type can be found by following the link to Mutation Overview page.',
+  `Mutation Description` varchar(45) DEFAULT NULL COMMENT 'Type of mutation (substitution, deletion, insertion, complex, fusion, unknown etc.)',
+  `Mutation zygosity` varchar(45) DEFAULT NULL COMMENT 'Information on whether the mutation was reported to be homozygous , heterozygous or unknown within the sample.',
+  `LOH` varchar(45) DEFAULT NULL COMMENT 'LOH Information on whether the gene was reported to have loss of heterozygosity in the sample: yes, no or unknown.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19 ',
+  `Mutation genome position` varchar(45) DEFAULT NULL COMMENT 'The genomic cooridnates of the mutation.',
+  `Mutation strand` varchar(45) DEFAULT NULL COMMENT 'positive or negative.',
+  `SNP` varchar(45) DEFAULT NULL COMMENT 'All the known SNPs are flagged as ''y'' defined by the 1000 genomes project, dbSNP and a panel of 378 normal (non-cancer) samples from Sanger CGP sequencing.',
+  `FATHMM prediction` varchar(45) DEFAULT NULL COMMENT 'More information about FATHMM (Functional Analysis through Hidden Markov Models) is available from here. FATHMM descriptors -\n\n        Pathogenic = Defined as Cancer or Damaging.\n        Neutral = Defined as Passenger or Tolerated. ',
+  `FATHMM Score` varchar(45) DEFAULT NULL COMMENT 'The scores are in the form of pvalues ranging from 0 to 1. Pvalues greater than 0.5 are pathogenic while less than 0.5 are benign. Pvalues close to 0 or 1 are the high confidence results which are more accurate. The results are annotated as 10 feature groups (separately for coding and non coding variants) details of which can be found in the original FATHMM-MKL paper.',
+  `Mutation somatic status` varchar(45) DEFAULT NULL COMMENT 'Information on whether the sample was reported to be Confirmed Somatic, Previously Reported or Variant of unknown origin -\n\n        variant of unknown origin = when the mutation is known to be somatic but the tumour was sequenced without a matched normal.\n        Confirmed Somatic = if the mutation has been confimed to be somatic in the experiment by sequencing both the tumour and a matched normal from the same patient.\n        Previously observed = when the mutation has been reported as somatic previously but not in current paper.',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in, linking to pubmed to provide more details of the publication.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this sample.',
+  `Sample source` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Tumour origin` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Age` varchar(45) DEFAULT NULL COMMENT 'Age of the individual (if this information is provided with the publications).',
+  PRIMARY KEY (`Gene name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicGenomeScreensMutantExport.tsv\n\nA tab separated table of coding point mutations from genome wide screens (including whole exome sequencing). (CosmicGenomeScreensMutantExport).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_mutant_export`
+--
+
+DROP TABLE IF EXISTS `cosmic_mutant_export`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_mutant_export` (
+  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
+  `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
+  `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
+  `HGNC id` varchar(45) DEFAULT NULL COMMENT 'if gene is in HGNC, this id helps linking it to HGNC.',
+  `Sample name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Id tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Genome-wide screen` varchar(45) DEFAULT NULL COMMENT 'if the enitre genome/exome is sequenced.',
+  `Mutation Id` varchar(45) DEFAULT NULL COMMENT 'unique mutation identifier.',
+  `Mutation CDS` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the nucleotide sequence. Formatting is identical to the method used for the peptide sequence.',
+  `Mutation AA` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the peptide sequence. Formatting is based on the recommendations made by the Human Genome Variation Society. The description of each type can be found by following the link to Mutation Overview page.',
+  `Mutation Description` varchar(45) DEFAULT NULL COMMENT 'Type of mutation (substitution, deletion, insertion, complex, fusion, unknown etc.)',
+  `Mutation zygosity` varchar(45) DEFAULT NULL COMMENT 'Information on whether the mutation was reported to be homozygous , heterozygous or unknown within the sample.',
+  `LOH` varchar(45) DEFAULT NULL COMMENT 'LOH Information on whether the gene was reported to have loss of heterozygosity in the sample: yes, no or unknown.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19   ',
+  `Mutation genome position` varchar(45) DEFAULT NULL COMMENT 'The genomic cooridnates of the mutation.',
+  `Mutation strand` varchar(45) DEFAULT NULL COMMENT 'postive or negative.',
+  `SNP` varchar(45) DEFAULT NULL COMMENT 'All the known SNPs are flagged as ''y'' defined by the 1000 genomes project, dbSNP and a panel of 378 normal (non-cancer) samples from Sanger CGP sequencing.',
+  `Resistance Mutation` varchar(45) DEFAULT NULL COMMENT 'mutation confers drug resistance (see CosmicResistanceMutations.tsv.gz for gene/drug details).',
+  `FATHMM prediction` varchar(45) DEFAULT NULL COMMENT 'More information about FATHMM (Functional Analysis through Hidden Markov Models) is available from here. FATHMM descriptors -\n\n        Pathogenic = Defined as Cancer or Damaging.\n        Neutral = Defined as Passenger or Tolerated.  ',
+  `FATHMM Score` varchar(45) DEFAULT NULL COMMENT 'The scores are in the form of pvalues ranging from 0 to 1. Pvalues greater than 0.5 are pathogenic while less than 0.5 are benign. Pvalues close to 0 or 1 are the high confidence results which are more accurate. The results are annotated as 10 feature groups (separately for coding and non coding variants) details of which can be found in the original FATHMM-MKL paper.',
+  `Mutation somatic status` varchar(45) DEFAULT NULL COMMENT 'Information on whether the sample was reported to be Confirmed Somatic, Previously Reported or Variant of unknown origin -\n\n        Variant of unknown origin = when the mutation is known to be somatic but the tumour was sequenced without a matched normal.\n        Confirmed Somatic = if the mutation has been confimed to be somatic in the experiment by sequencing both the tumour and a matched normal from the same patient.\n        Previously observed = when the mutation has been reported as somatic previously but not in current paper.     ',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in, linking to pubmed to provide more details of the publication.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this sample.',
+  `Sample source` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Tumour origin` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Age` varchar(45) DEFAULT NULL COMMENT 'Age of the sample (if this information is provided with the publications).',
+  PRIMARY KEY (`Gene name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicMutantExport.tsv\n\nCOSMIC Mutation Data\n\nA tab separated table of all COSMIC coding point mutations from targeted and genome wide screens from the current release. (CosmicMutantExport).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_mutant_export_census`
+--
+
+DROP TABLE IF EXISTS `cosmic_mutant_export_census`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_mutant_export_census` (
+  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
+  `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
+  `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
+  `HGNC id` varchar(45) DEFAULT NULL COMMENT 'if gene is in HGNC, this id helps linking it to HGNC.',
+  `Sample name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Id tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Genome-wide screen` varchar(45) DEFAULT NULL COMMENT 'if the enitre genome/exome is sequenced.',
+  `Mutation Id` varchar(45) DEFAULT NULL COMMENT 'unique mutation identifier.',
+  `Mutation CDS` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the nucleotide sequence. Formatting is identical to the method used for the peptide sequence.',
+  `Mutation AA` varchar(45) DEFAULT NULL COMMENT 'The change that has occurred in the peptide sequence. Formatting is based on the recommendations made by the Human Genome Variation Society. The description of each type can be found by following the link to Mutation Overview page.',
+  `Mutation Description` varchar(45) DEFAULT NULL COMMENT 'Type of mutation (substitution, deletion, insertion, complex, fusion etc.)',
+  `Mutation zygosity` varchar(45) DEFAULT NULL COMMENT 'Information on whether the mutation was reported to be homozygous , heterozygous or unknown within the sample.',
+  `LOH` varchar(45) DEFAULT NULL COMMENT 'LOH Information on whether the gene was reported to have loss of heterozygosity in the sample: yes, no or unknown.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19',
+  `Mutation genome position` varchar(45) DEFAULT NULL COMMENT 'The genomic cooridnates of the mutation.',
+  `Mutation strand` varchar(45) DEFAULT NULL COMMENT 'positive or negative.',
+  `SNP` varchar(45) DEFAULT NULL COMMENT 'All the known SNPs are flagged as ''y'' defined by the 1000 genomes project, dbSNP and a panel of 378 normal (non-cancer) samples from Sanger CGP sequencing.',
+  `Resistance Mutation` varchar(45) DEFAULT NULL COMMENT 'mutation confers drug resistance (see CosmicResistanceMutations.tsv.gz for gene/drug details).',
+  `FATHMM prediction` varchar(45) DEFAULT NULL COMMENT 'More information about FATHMM (Functional Analysis through Hidden Markov Models) is available from here. FATHMM descriptors -\n\n        Pathogenic = Defined as Cancer or Damaging.\n        Neutral = Defined as Passenger or Tolerated.     ',
+  `FATHMM score` varchar(45) DEFAULT NULL COMMENT 'The FATHMM-MKL functional score is a p-value, ranging from 0 to 1. Scores above 0.5 are deleterious, but in order to highlight the most significant data in COSMIC, only scores >= 0.7 are classified as ''Pathogenic''. Mutations are classed as ''Neutral'' if the score is <= 0.5.',
+  `Mutation somatic status` varchar(45) DEFAULT NULL COMMENT 'Information on whether the sample was reported to be Confirmed Somatic, Previously Reported or Variant of unknown origin -\n\n        Variant of unknown origin = when the mutation is known to be somatic but the tumour was sequenced without a matched normal.\n        Confirmed Somatic = if the mutation has been confimed to be somatic in the experiment by sequencing both the tumour and a matched normal from the same patient.\n        Previously observed = when the mutation has been reported as somatic previously but not in current paper.  ',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in, linking to pubmed to provide more details of the publication.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this sample.',
+  `Sample source` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Tumour origin` varchar(45) DEFAULT NULL COMMENT 'Describes where the sample has originated from including the tumour type.',
+  `Age` varchar(45) DEFAULT NULL COMMENT 'Age of the sample (if this information is provided with the publications).',
+  PRIMARY KEY (`Gene name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicMutantExportCensus.tsv\n\nAll Mutations in Census Genes\n\nAll coding mutations in genes listed in the Cancer Gene Census in a tab separated file. here (CosmicMutantExportCensus).';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_ncv`
+--
+
+DROP TABLE IF EXISTS `cosmic_ncv`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_ncv` (
+  `Sample name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Id NCV` varchar(45) DEFAULT NULL COMMENT 'unique non-coding variant identifier.',
+  `Zygosity` varchar(45) DEFAULT NULL COMMENT 'Information on whether the mutation was reported to be homozygous , heterozygous or unknown within the sample.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19     ',
+  `Genome position` varchar(45) DEFAULT NULL COMMENT 'The genomic cooridnate of the mutation.',
+  `Mutation somatic status` varchar(45) DEFAULT NULL COMMENT 'Information on whether the sample was reported to be Confirmed Somatic, Previously Reported or Variant of unknown origin -\n\n        variant of unknown origin = when the mutation is known to be somatic but the tumour was sequenced without a matched normal.\n        Confirmed Somatic = if the mutation has been confimed to be somatic in the experiment by sequencing both the tumour and a matched normal from the same patient.\n        Previously observed = when the mutation has been reported as somatic previously but not in current paper.   ',
+  `WT SEQ` varchar(45) DEFAULT NULL COMMENT 'wild type sequence.',
+  `MUT SEQ` varchar(45) DEFAULT NULL COMMENT 'Mutated sequence.',
+  `SNP` varchar(45) DEFAULT NULL COMMENT ' All the known SNPs are flagged as ''y'' defined by the 1000 genomes project, dbSNP and a panel of 378 normal (non-cancer) samples from Sanger CGP sequencing.',
+  `FATHMM_MKL_NON_CODING_SCORE` varchar(45) DEFAULT NULL COMMENT 'FATHMM-MKL non-coding score. A p-value ranging from 0 to 1 where >= 0.7 is functionally significant.',
+  `FATHMM_MKL_NON_CODING_GROUPS` varchar(45) DEFAULT NULL COMMENT 'FATHMM-MKL group classification. More details from here.',
+  `FATHMM_MKL_CODING_SCORE` varchar(45) DEFAULT NULL COMMENT 'FATHMM-MKL coding score (p-value ranging from 0 to 1).',
+  `FATHMM_MKL_CODING_GROUPS` varchar(45) DEFAULT NULL COMMENT 'FATHMM-MKL group classification (coding). More details from here.',
+  `Whole Genome Reseq` varchar(45) DEFAULT NULL COMMENT 'if the enitre genome is sequenced.',
+  `Whole_Exome` varchar(45) DEFAULT NULL COMMENT 'if the enitre exome is sequenced.',
+  `Id Study` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this non coding mutation.',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in.',
+  PRIMARY KEY (`Sample name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicNCV.tsv\n\nNon coding variants\n\nA tab separated file of all non-coding mutations from the current release. (CosmicNCV).\n';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cosmic_struct_export`
+--
+
+DROP TABLE IF EXISTS `cosmic_struct_export`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cosmic_struct_export` (
+  `Sample name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual.',
+  `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
+  `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
+  `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
+  `Site Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 3) of the samples tissue of origin.',
+  `Primary Histology` varchar(45) DEFAULT NULL COMMENT 'The histological classification of the sample.',
+  `Histology Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 1) of the sample.',
+  `Histology Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 2) of the sample.',
+  `Histology Subtype 3` varchar(45) DEFAULT NULL COMMENT 'Further histological classification (level 3) of the sample.',
+  `Mutation Id` varchar(45) DEFAULT NULL COMMENT 'unique mutation identifier.',
+  `Mutation Type` varchar(45) DEFAULT NULL COMMENT 'Type of mutation : Intra/Inter (chromosomal), tandem duplication, deletion, inversion, complex substitutions, complex amplicons.',
+  `GRCh` varchar(45) DEFAULT NULL COMMENT 'The coordinate system used -\n\n        38 = GRCh38/Hg38\n        37 = GRCh37/Hg19 ',
+  `Description` varchar(45) DEFAULT NULL COMMENT 'A syntax which describes the structural variant, based on HGVS recommendations.',
+  `Pubmed_PMID` varchar(45) DEFAULT NULL COMMENT 'The PUBMED ID for the paper that the sample was noted in.',
+  `ID_STUDY` varchar(45) DEFAULT NULL COMMENT 'Lists the unique Ids of studies that have involved this structural mutation.',
+  PRIMARY KEY (`Sample name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CosmicStructExport.tsv\n\nStructural Variants\n\nAll structural variants from the current release in a tab separated file. (CosmicStructExport).';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `gene_expression`
@@ -140,15 +482,6 @@ CREATE TABLE `gene_expression` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gene_expression`
---
-
-LOCK TABLES `gene_expression` WRITE;
-/*!40000 ALTER TABLE `gene_expression` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gene_expression` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `hgnc`
 --
 
@@ -166,15 +499,6 @@ CREATE TABLE `hgnc` (
   PRIMARY KEY (`cosmic_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A tab separated file showing the relationship between the Cancer Gene Census, COSMIC ID, Gene Name, HGNC ID and Entrez ID. (CosmicHGNC).\nCosmicHGNC.tsv';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `hgnc`
---
-
-LOCK TABLES `hgnc` WRITE;
-/*!40000 ALTER TABLE `hgnc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `hgnc` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `resistance_mutations`
@@ -208,15 +532,6 @@ CREATE TABLE `resistance_mutations` (
   PRIMARY KEY (`Sample_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A tab separated file listing the details of all mutations in COSMIC which are known to confer drug resistance. (CosmicResistanceMutations).\nCosmicResistanceMutations.tsv';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `resistance_mutations`
---
-
-LOCK TABLES `resistance_mutations` WRITE;
-/*!40000 ALTER TABLE `resistance_mutations` DISABLE KEYS */;
-/*!40000 ALTER TABLE `resistance_mutations` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `sample_features`
@@ -269,15 +584,6 @@ CREATE TABLE `sample_features` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sample_features`
---
-
-LOCK TABLES `sample_features` WRITE;
-/*!40000 ALTER TABLE `sample_features` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sample_features` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `transcripts`
 --
 
@@ -291,15 +597,6 @@ CREATE TABLE `transcripts` (
   PRIMARY KEY (`Gene_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A tab separated file listing the gene name and transcript accession for each gene ID. (CosmicTranscripts).\nCosmicTranscripts.tsv';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `transcripts`
---
-
-LOCK TABLES `transcripts` WRITE;
-/*!40000 ALTER TABLE `transcripts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `transcripts` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping events for database 'cosmic'
@@ -318,4 +615,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-19 21:55:54
+-- Dump completed on 2017-03-28 21:34:57
