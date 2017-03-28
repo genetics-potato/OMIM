@@ -146,10 +146,6 @@
       <Project>{db0548dc-d71d-4090-888a-07e249fde9de}</Project>
       <Name>DrugBank</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OMIM\OMIM\OMIM.vbproj">
-      <Project>{334ba774-2fe7-4a20-b725-5ae6f6f7d246}</Project>
-      <Name>OMIM</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
