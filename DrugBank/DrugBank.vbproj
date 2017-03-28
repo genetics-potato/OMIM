@@ -91,8 +91,35 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Imports.vb" />
     <Compile Include="mysql\drug.vb" />
+    <Compile Include="mysql\drug_atc_code.vb" />
+    <Compile Include="mysql\drug_calculated_properties.vb" />
+    <Compile Include="mysql\drug_category.vb" />
+    <Compile Include="mysql\drug_classification.vb" />
+    <Compile Include="mysql\drug_dosage.vb" />
+    <Compile Include="mysql\drug_experimental_properties.vb" />
+    <Compile Include="mysql\drug_external_identifiers.vb" />
+    <Compile Include="mysql\drug_external_links.vb" />
+    <Compile Include="mysql\drug_interactions.vb" />
+    <Compile Include="mysql\drug_manufacturers.vb" />
+    <Compile Include="mysql\drug_mixtures.vb" />
+    <Compile Include="mysql\drug_packagers.vb" />
+    <Compile Include="mysql\drug_patents.vb" />
+    <Compile Include="mysql\drug_pathways.vb" />
+    <Compile Include="mysql\drug_price.vb" />
+    <Compile Include="mysql\drug_products.vb" />
+    <Compile Include="mysql\drug_reactions.vb" />
+    <Compile Include="mysql\drug_snp_effects.vb" />
+    <Compile Include="mysql\drug_synonym.vb" />
+    <Compile Include="mysql\drug_targets.vb" />
+    <Compile Include="mysql\pathway_drugs.vb" />
+    <Compile Include="mysql\polypeptide_external_ids.vb" />
+    <Compile Include="mysql\polypeptide_sequences.vb" />
+    <Compile Include="mysql\polypeptide_synonyms.vb" />
     <Compile Include="mysql\reference.vb" />
+    <Compile Include="mysql\target_polypeptides.vb" />
+    <Compile Include="XML\reactions.vb" />
     <Compile Include="XML\pathway.vb" />
     <Compile Include="XML\Reference.vb" />
     <Compile Include="XML\target.vb" />

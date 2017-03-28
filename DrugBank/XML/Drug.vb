@@ -67,6 +67,8 @@ Namespace XML
         Public Property drug_interactions As DrugInteraction()
         Public Property patents As patent()
         Public Property sequences As sequence()
+        <XmlArray("calculated-properties")>
+        Public Property calculated_properties As [property]()
         <XmlArray("experimental-properties")>
         Public Property experimentalProperties As [property]()
         <XmlArray("external-identifiers")>
@@ -75,7 +77,27 @@ Namespace XML
         Public Property targets As target()
         <XmlArray("external-links")>
         Public Property externalLinks As externalLink()
+        <XmlArray("snp-effects")>
+        Public Property snpEffects As snpEffect()
+        Public Property reactions As reaction()
 
+        Public ReadOnly Property PrimaryID As String
+            Get
+                Dim primary As DrugBankID = drugbankIDs _
+                    .Where(Function(id) id.primary = True) _
+                    .FirstOrDefault
+                Return primary?.ID
+            End Get
+        End Property
+
+        Public ReadOnly Property OtherIDs As String()
+            Get
+                Return drugbankIDs _
+                    .Where(Function(id) Not id.primary) _
+                    .Select(Function(id) id.ID) _
+                    .ToArray
+            End Get
+        End Property
     End Class
 
     <XmlType("international-brand")>

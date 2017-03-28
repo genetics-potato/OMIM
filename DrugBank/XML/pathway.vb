@@ -19,11 +19,6 @@ Namespace XML
         End Class
     End Class
 
-    Public Class enzyme
-        <XmlElement("uniprot-id")>
-        Public Property uniprotID As String
-    End Class
-
     <XmlType("external-identifier")>
     Public Class externalIdentifier
         Public Property resource As String
