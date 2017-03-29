@@ -433,6 +433,23 @@ CREATE TABLE `pathway_drugs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `pathway_enzymes`
+--
+
+DROP TABLE IF EXISTS `pathway_enzymes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pathway_enzymes` (
+  `uniprotID` varchar(45) NOT NULL,
+  `pathway_smpdb_id` varchar(45) NOT NULL,
+  `drugID` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `enzyme_drugbankID` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`uniprotID`,`pathway_smpdb_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `polypeptide_external_ids`
 --
 
@@ -550,4 +567,4 @@ CREATE TABLE `target_polypeptides` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-29 14:13:57
+-- Dump completed on 2017-03-29 15:24:51

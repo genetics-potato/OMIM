@@ -69,6 +69,9 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\OMIM\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -111,6 +114,7 @@
     <Compile Include="mysql\drug_synonym.vb" />
     <Compile Include="mysql\drug_targets.vb" />
     <Compile Include="mysql\pathway_drugs.vb" />
+    <Compile Include="mysql\pathway_enzymes.vb" />
     <Compile Include="mysql\polypeptide_external_ids.vb" />
     <Compile Include="mysql\polypeptide_sequences.vb" />
     <Compile Include="mysql\polypeptide_synonyms.vb" />
