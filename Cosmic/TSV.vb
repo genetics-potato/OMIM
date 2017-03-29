@@ -6,6 +6,7 @@ Imports Microsoft.VisualBasic.Scripting
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
 Imports Oracle.LinuxCompatibility.MySQL
+Imports Oracle.LinuxCompatibility.MySQL.CodeSolution.VisualBasic
 Imports Oracle.LinuxCompatibility.MySQL.Reflection.Schema
 
 ''' <summary>
@@ -25,7 +26,7 @@ Public Module TSV
         End If
 
         Using reader As StreamReader = tsv.OpenReader(), sql As StreamWriter = save.OpenWriter
-            Dim index As New IndexOf(Of String)(reader.ReadLine.ToLower.Split(ASCII.TAB))
+            Dim index As New IndexOf(Of String)(reader.ReadLine.ToLower.Split(ASCII.TAB).Select(AddressOf CodeGenerator.FixInvalids))
             Dim type As Type = GetType(T)
             Dim schema As New Table(type)
             Dim propWrites As NamedValue(Of PropertyInfo)() =
