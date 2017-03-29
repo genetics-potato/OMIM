@@ -1,6 +1,6 @@
 ﻿Imports System.Xml.Serialization
 Imports Microsoft.VisualBasic.Serialization.JSON
-Imports Microsoft.VisualBasic.Text.Xml
+Imports Microsoft.VisualBasic.Text.Xml.Linq
 
 Namespace XML
 
@@ -29,10 +29,13 @@ Namespace XML
             Return Me.GetJson
         End Function
 
-        Public Shared Function Load(path$) As Database
-            Return path.LoadXml(Of Database)
-            '  Dim xml As New XmlDoc(path.ReadAllText)
-            '   xml.xmlns.xmlns =
+        ''' <summary>
+        ''' 采用迭代器的方式加载drugbank_all_full_database.xml
+        ''' </summary>
+        ''' <param name="path$"></param>
+        ''' <returns></returns>
+        Public Shared Function Load(path$) As IEnumerable(Of Drug)
+            Return path.LoadXmlDataSet(Of Drug)("drug", xmlns:="http://www.drugbank.ca")
         End Function
     End Class
 End Namespace

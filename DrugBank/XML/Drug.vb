@@ -3,7 +3,7 @@ Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace XML
 
-    Public Class Drug
+    <XmlType("drug")> Public Class Drug
 
         <XmlAttribute> Public Property type As String
         <XmlAttribute> Public Property created As String
@@ -81,11 +81,20 @@ Namespace XML
         Public Property snpEffects As snpEffect()
         Public Property reactions As reaction()
 
+        ''' <summary>
+        ''' 获取得到当前的这个药物对象的主编号，主编号在编号对象之中具有一个Primary的属性标记
+        ''' 当在编号列表之中找不到这个属性的时候，会默认使用第一个编号作为主编号 
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property PrimaryID As String
             Get
                 Dim primary As DrugBankID = drugbankIDs _
                     .Where(Function(id) id.primary = True) _
                     .FirstOrDefault
+                If primary Is Nothing Then
+                    ' 有些是还没有primaryID的，则默认使用id列表之中的第一个编号为主编号
+                    primary = drugbankIDs.FirstOrDefault
+                End If
                 Return primary?.ID
             End Get
         End Property

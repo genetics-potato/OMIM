@@ -9,14 +9,19 @@ Namespace XML
         Public Property smpdb_id As String
         Public Property name As String
         Public Property category As String
-        Public Property drugs As drug()
+        Public Property drugs As PathwayDrug
         Public Property enzymes As enzyme()
 
-        Public Class drug
-            <XmlElement("drugbank-id")>
-            Public Property drugbankID As String
-            Public Property name As String
+        Public Class PathwayDrug
+            <XmlElement("drug")>
+            Public Property drugs As DrugbankObject()
         End Class
+    End Class
+
+    Public Class DrugbankObject
+        <XmlElement("drugbank-id")>
+        Public Property drugbankID As String
+        Public Property name As String
     End Class
 
     <XmlType("external-identifier")>
