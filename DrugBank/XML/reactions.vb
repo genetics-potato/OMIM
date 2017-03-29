@@ -8,12 +8,18 @@ Namespace XML
         Public Property leftElements As element()
         <XmlElement("right-element")>
         Public Property rightElements As element()
-        Public Property enzymes As enzyme()
+        Public Property enzymes As reactionEnzyme()
     End Class
 
-    Public Class enzyme : Inherits element
+    <XmlType("enzyme")>
+    Public Class reactionEnzyme : Inherits element
         <XmlElement("uniprot-id")>
         Public Property uniprotID As String
+    End Class
+
+    Public Class pathwayEnzyme
+        <XmlElement("uniprot-id")>
+        Public Property uniprotID As String()
     End Class
 
     Public Class element

@@ -47,31 +47,31 @@ Public Module [Imports]
         For Each d As XML.Drug In XML.Database.Load(fullXML)
 
             drugs += New mysql.drug With {
-                .absorption = d.absorption,
+                .absorption = d.absorption.MySqlEscaping,
                 .primaryID = d.PrimaryID,
-                .other_IDs = d.OtherIDs.JoinBy("; "),
+                .other_IDs = d.OtherIDs.JoinBy("; ").MySqlEscaping,
                 .average_mass = d.averageMass,
-                .cas_number = d.CASNumber,
-                .clearance = d.clearance,
-                .created = d.created,
-                .description = d.description,
-                .fdaLabel = d.fdaLabel,
-                .halfLife = d.halfLife,
-                .indication = d.indication,
-                .mechanism_of_action = d.mechanism_of_action,
-                .metabolism = d.metabolism,
+                .cas_number = d.CASNumber.MySqlEscaping,
+                .clearance = d.clearance.MySqlEscaping,
+                .created = d.created.MySqlEscaping,
+                .description = d.description.MySqlEscaping,
+                .fdaLabel = d.fdaLabel.MySqlEscaping,
+                .halfLife = d.halfLife.MySqlEscaping,
+                .indication = d.indication.MySqlEscaping,
+                .mechanism_of_action = d.mechanism_of_action.MySqlEscaping,
+                .metabolism = d.metabolism.MySqlEscaping,
                 .monoisotopic_Mass = d.monoisotopicMass,
-                .msds = d.msds,
-                .name = d.name,
-                .pharmacodynamics = d.pharmacodynamics,
-                .route_of_elimination = d.route_of_elimination,
-                .state = d.state,
-                .synthesisReferences = d.synthesisReferences,
-                .toxicity = d.toxicity,
-                .type = d.type,
-                .unii = d.unii,
-                .updated = d.updated,
-                .volume_of_distribution = d.volume_of_distribution
+                .msds = d.msds.MySqlEscaping,
+                .name = d.name.MySqlEscaping,
+                .pharmacodynamics = d.pharmacodynamics.MySqlEscaping,
+                .route_of_elimination = d.route_of_elimination.MySqlEscaping,
+                .state = d.state.MySqlEscaping,
+                .synthesisReferences = d.synthesisReferences.MySqlEscaping,
+                .toxicity = d.toxicity.MySqlEscaping,
+                .type = d.type.MySqlEscaping,
+                .unii = d.unii.MySqlEscaping,
+                .updated = d.updated.MySqlEscaping,
+                .volume_of_distribution = d.volume_of_distribution.MySqlEscaping
             }
 #Region ""
             With d.DrugTargets
@@ -150,41 +150,44 @@ Public Module [Imports]
         Dim targets = drug.targets.SafeQuery.Select(
             Function(t)
                 Return New mysql.drug_targets With {
-                    .actions = t.actions.Select(Function(a) a.action).JoinBy("; "),
+                    .actions = t.actions.SafeQuery.Select(Function(a) a.action).JoinBy("; ").MySqlEscaping,
                     .drug = drug.PrimaryID,
-                    .known_action = t.knownAction,
-                    .name = t.name,
-                    .organism = t.organism,
-                    .polypeptide = t.polypeptide.id,
-                    .target_id = t.id
+                    .known_action = t.knownAction.MySqlEscaping,
+                    .name = MySqlEscaping(t.name),
+                    .organism = t.organism.MySqlEscaping,
+                    .polypeptide = t.polypeptide?.id.MySqlEscaping,
+                    .target_id = t.id.MySqlEscaping
                 }
             End Function).ToArray
         Dim targetPolypeptides = drug.targets.SafeQuery.Select(
             Function(t)
                 Dim pl = t.polypeptide
+                If pl Is Nothing Then
+                    Return Nothing
+                End If
                 Return New mysql.target_polypeptides With {
-                    .cellular_location = pl.cellularLocation,
-                    .chromosome_location = pl.chromosomeLocation,
+                    .cellular_location = pl.cellularLocation.MySqlEscaping,
+                    .chromosome_location = MySqlEscaping(pl.chromosomeLocation),
                     .drug_id = drug.PrimaryID,
-                    .general_function = pl.generalFunction,
-                    .gene_name = pl.geneName,
-                    .locus = pl.locus,
+                    .general_function = MySqlEscaping(pl.generalFunction),
+                    .gene_name = MySqlEscaping(pl.geneName),
+                    .locus = pl.locus.MySqlEscaping,
                     .molecular_weight = pl.molecularWeight,
-                    .name = pl.name,
-                    .organism = pl.organism.name,
-                    .organism_ncbi_taxonomy_id = pl.organism.NCBItaxonomyID,
-                    .polypeptide_id = pl.id,
-                    .signal_regions = pl.signalRegions,
-                    .source = pl.source,
-                    .specific_function = pl.specificFunction,
-                    .target_id = t.id,
+                    .name = pl.name.MySqlEscaping,
+                    .organism = MySqlEscaping(pl.organism?.name),
+                    .organism_ncbi_taxonomy_id = pl.organism?.NCBItaxonomyID.MySqlEscaping,
+                    .polypeptide_id = pl.id.MySqlEscaping,
+                    .signal_regions = MySqlEscaping(pl.signalRegions),
+                    .source = pl.source.MySqlEscaping,
+                    .specific_function = pl.specificFunction.MySqlEscaping,
+                    .target_id = t.id.MySqlEscaping,
                     .theoretical_PI = pl.theoreticalPI,
-                    .transmembrane_regions = pl.transmembraneRegions
+                    .transmembrane_regions = MySqlEscaping(pl.transmembraneRegions)
                 }
             End Function).ToArray
         Dim plexternalIDs = drug.targets.SafeQuery.Select(
             Function(t)
-                Return t.polypeptide.externalIdentifiers.Select(
+                Return t.polypeptide?.externalIdentifiers.SafeQuery.Select(
                     Function(id)
                         Return New mysql.polypeptide_external_ids With {
                             .id = id.identifier,
@@ -195,37 +198,42 @@ Public Module [Imports]
             End Function).IteratesALL.ToArray
         Dim plSequence = drug.targets.SafeQuery.Select(
             Function(t)
+                If t.polypeptide Is Nothing Then
+                    Return Nothing
+                End If
                 Return New mysql.polypeptide_sequences With {
-                    .aa = t.polypeptide.AA.sequence,
-                    .nt = t.polypeptide.NT.sequence,
-                    .go_bp = t.polypeptide.goClassifiers.Where(Function(go) go.category = "").Select(Function(go) go.description).JoinBy("; "),
-                    .go_cc = t.polypeptide.goClassifiers.Where(Function(go) go.category = "").Select(Function(go) go.description).JoinBy("; "),
-                    .go_mf = t.polypeptide.goClassifiers.Where(Function(go) go.category = "").Select(Function(go) go.description).JoinBy("; "),
-                    .pfam = t.polypeptide.pfams.Select(Function(pf) pf.identifier).JoinBy("; "),
+                    .aa = MySqlEscaping(t.polypeptide.AA.sequence),
+                    .nt = MySqlEscaping(t.polypeptide.NT.sequence),
+                    .go_bp = t.polypeptide.goClassifiers.Where(Function(go) go.category = "process").Select(Function(go) go.description).JoinBy("; ").MySqlEscaping,
+                    .go_cc = t.polypeptide.goClassifiers.Where(Function(go) go.category = "component").Select(Function(go) go.description).JoinBy("; ").MySqlEscaping,
+                    .go_mf = t.polypeptide.goClassifiers.Where(Function(go) go.category = "function").Select(Function(go) go.description).JoinBy("; ").MySqlEscaping,
+                    .pfam = t.polypeptide.pfams.Select(Function(pf) pf.identifier).JoinBy("; ").MySqlEscaping,
                     .polypeptide = t.polypeptide.id
                 }
             End Function).ToArray
         Dim plSynonms = drug.targets.SafeQuery.Select(
             Function(t)
-                Return t.polypeptide.synonyms.Select(
-                    Function(sy)
-                        Dim i As int = 0
+                Dim i As int = 0
 
-                        Return New mysql.polypeptide_synonyms With {
-                            .polypeptide = t.polypeptide.id,
-                            .synonym1 = t.polypeptide.synonyms(++i).value,
-                            .synonym2 = t.polypeptide.synonyms(++i).value,
-                            .synonym3 = t.polypeptide.synonyms(++i).value,
-                            .synonym4 = t.polypeptide.synonyms(++i).value,
-                            .synonym5 = t.polypeptide.synonyms(++i).value,
-                            .synonym6 = t.polypeptide.synonyms(++i).value,
-                            .synonym7 = t.polypeptide.synonyms(++i).value,
-                            .synonym8 = t.polypeptide.synonyms(++i).value,
-                            .synonym9 = t.polypeptide.synonyms(++i).value,
-                            .synonym10 = t.polypeptide.synonyms(++i).value
-                        }
-                    End Function)
-            End Function).IteratesALL.ToArray
+                If t.polypeptide Is Nothing Then
+                    Return Nothing
+                End If
+
+                Return New mysql.polypeptide_synonyms With {
+                    .polypeptide = t.polypeptide.id,
+                    .synonym1 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym2 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym3 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym4 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym5 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym6 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym7 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym8 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym9 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping,
+                    .synonym10 = t.polypeptide.synonyms.Get(++i)?.value.MySqlEscaping
+                }
+
+            End Function).ToArray
 
         Return (targets, targetPolypeptides, plexternalIDs, plSequence, plSynonms)
     End Function
@@ -235,12 +243,12 @@ Public Module [Imports]
         Return drug.snpEffects.SafeQuery.Select(
             Function(snp)
                 Return New mysql.drug_snp_effects With {
-                    .allele = snp.allele,
-                    .defining_change = snp.definingChange,
-                    .description = snp.description,
+                    .allele = snp.allele.MySqlEscaping,
+                    .defining_change = snp.definingChange.MySqlEscaping,
+                    .description = snp.description.MySqlEscaping,
                     .drug = drug.PrimaryID,
-                    .gene_symbol = snp.geneSymbol,
-                    .protein_name = snp.proteinName,
+                    .gene_symbol = snp.geneSymbol.MySqlEscaping,
+                    .protein_name = snp.proteinName.MySqlEscaping,
                     .pubmed_id = snp.pubmedID,
                     .rs_ID = snp.rsID,
                     .uniprot = snp.uniprotID
@@ -256,18 +264,18 @@ Public Module [Imports]
 
                 Return New mysql.drug_reactions With {
                     .drug = drug.PrimaryID,
-                    .enzymes = r.enzymes.Select(Function(x) x.drugbankID).JoinBy("; "),
+                    .enzymes = r.enzymes.Select(Function(x) x.uniprotID).JoinBy("; "),
                     .sequence = r.sequence,
-                    .left1 = r.leftElements(++i).drugbankID,
-                    .left2 = r.leftElements(++i).drugbankID,
-                    .left3 = r.leftElements(++i).drugbankID,
-                    .left4 = r.leftElements(++i).drugbankID,
-                    .left5 = r.leftElements(++i).drugbankID,
-                    .right1 = r.rightElements(++j).drugbankID,
-                    .right2 = r.rightElements(++j).drugbankID,
-                    .right3 = r.rightElements(++j).drugbankID,
-                    .right4 = r.rightElements(++j).drugbankID,
-                    .right5 = r.rightElements(++j).drugbankID
+                    .left1 = r.leftElements.Get(++i)?.drugbankID,
+                    .left2 = r.leftElements.Get(++i)?.drugbankID,
+                    .left3 = r.leftElements.Get(++i)?.drugbankID,
+                    .left4 = r.leftElements.Get(++i)?.drugbankID,
+                    .left5 = r.leftElements.Get(++i)?.drugbankID,
+                    .right1 = r.rightElements.Get(++j)?.drugbankID,
+                    .right2 = r.rightElements.Get(++j)?.drugbankID,
+                    .right3 = r.rightElements.Get(++j)?.drugbankID,
+                    .right4 = r.rightElements.Get(++j)?.drugbankID,
+                    .right5 = r.rightElements.Get(++j)?.drugbankID
                 }
             End Function).ToArray
     End Function
@@ -279,8 +287,8 @@ Public Module [Imports]
                 Return New mysql.drug_pathways With {
                     .category = pwy.category,
                     .drug = drug.PrimaryID,
-                    .enzymes = pwy.enzymes.SafeQuery.Select(Function(o) o.drugbankID).JoinBy("; "),
-                    .name = pwy.name,
+                    .enzymes = pwy.enzymes?.uniprotID.JoinBy("; "),
+                    .name = MySqlEscaping(pwy.name),
                     .smpdb_id = pwy.smpdb_id
                 }
             End Function).ToArray
@@ -290,21 +298,21 @@ Public Module [Imports]
                     Function(dr)
                         Return New mysql.pathway_drugs With {
                             .drug = dr.drugbankID,
-                            .name = dr.name,
+                            .name = MySqlEscaping(dr.name),
                             .pathway_smpdb_id = pwy.smpdb_id
                         }
                     End Function).ToArray
             End Function).IteratesALL.ToArray
         Dim penzymes = drug.pathways.SafeQuery.Select(
             Function(pwy)
-                Return pwy.enzymes.SafeQuery.Select(
+                Return pwy.enzymes.uniprotID.SafeQuery.Select(
                     Function(x)
                         Return New mysql.pathway_enzymes With {
                             .drugID = drug.PrimaryID,
                             .pathway_smpdb_id = pwy.smpdb_id,
-                            .uniprotID = x.uniprotID,
-                            .name = x.name,
-                            .enzyme_drugbankID = x.drugbankID
+                            .uniprotID = x,
+                            .name = MySqlEscaping(x),
+                            .enzyme_drugbankID = x
                         }
                     End Function).ToArray
             End Function).IteratesALL.ToArray
@@ -333,8 +341,8 @@ Public Module [Imports]
             Function(pk)
                 Return New mysql.drug_packagers With {
                     .drug = drug.PrimaryID,
-                    .packager_name = pk.name,
-                    .url = pk.url
+                    .packager_name = MySqlEscaping(pk.name),
+                    .url = MySqlEscaping(pk.url)
                 }
             End Function).ToArray
     End Function
@@ -383,8 +391,8 @@ Public Module [Imports]
                 Return New mysql.drug_experimental_properties With {
                     .drug = drug.PrimaryID,
                     .kind = prop.kind,
-                    .source = prop.source,
-                    .value = prop.value
+                    .source = MySqlEscaping(prop.source),
+                    .value = MySqlEscaping(prop.value)
                 }
             End Function).ToArray
     End Function
@@ -395,9 +403,9 @@ Public Module [Imports]
             Function(d)
                 Return New mysql.drug_dosage With {
                     .drug = drug.PrimaryID,
-                    .form = d.form,
-                    .route = d.route,
-                    .strength = d.strength
+                    .form = MySqlEscaping(d.form),
+                    .route = MySqlEscaping(d.route),
+                    .strength = MySqlEscaping(d.strength)
                 }
             End Function).ToArray
     End Function
@@ -424,8 +432,8 @@ Public Module [Imports]
             .Select(Function(c)
                         Return New mysql.drug_category With {
                             .drug = drug.PrimaryID,
-                            .category = c.category,
-                            .mesh_id = c.mesh_id
+                            .category = c.category.MySqlEscaping,
+                            .mesh_id = c.mesh_id.MySqlEscaping
                         }
                     End Function).ToArray
     End Function
@@ -437,8 +445,8 @@ Public Module [Imports]
             .Select(Function(m)
                         Return New mysql.drug_mixtures With {
                             .drug = drug.PrimaryID,
-                            .ingredients = m.ingredients,
-                            .mixture_name = m.name
+                            .ingredients = m.ingredients.MySqlEscaping,
+                            .mixture_name = m.name.MySqlEscaping
                         }
                     End Function).ToArray
     End Function
@@ -452,7 +460,7 @@ Public Module [Imports]
                             .coder = s.coder,
                             .drug = drug.PrimaryID,
                             .language = s.language,
-                            .synonym = s.value
+                            .synonym = s.value.MySqlEscaping
                         }
                     End Function).ToArray
     End Function
@@ -465,21 +473,21 @@ Public Module [Imports]
                         Return New mysql.drug_products With {
                             .drug = drug.PrimaryID,
                             .approved = p.approved,
-                            .country = p.country,
-                            .dosage_form = p.dosage_form,
-                            .dpd_id = p.dpd_id,
-                            .ended_marketting_on = p.ended_marketing_on,
-                            .fda_application_number = p.fda_application_number,
+                            .country = p.country.MySqlEscaping,
+                            .dosage_form = p.dosage_form.MySqlEscaping,
+                            .dpd_id = p.dpd_id.MySqlEscaping,
+                            .ended_marketting_on = p.ended_marketing_on.MySqlEscaping,
+                            .fda_application_number = p.fda_application_number.MySqlEscaping,
                             .generic = p.generic,
-                            .labeller = p.labeller,
+                            .labeller = p.labeller.MySqlEscaping,
                             .name = MySqlEscaping(p.name),
-                            .ndc_id = p.ndc_id,
-                            .ndc_product_code = p.ndc_product_code,
+                            .ndc_id = p.ndc_id.MySqlEscaping,
+                            .ndc_product_code = p.ndc_product_code.MySqlEscaping,
                             .over_the_counter = p.over_the_counter,
-                            .route = p.route,
-                            .source = p.source,
-                            .start_marketing_on = p.started_marketing_on,
-                            .strength = p.strength
+                            .route = p.route.MySqlEscaping,
+                            .source = p.source.MySqlEscaping,
+                            .start_marketing_on = p.started_marketing_on.MySqlEscaping,
+                            .strength = p.strength.MySqlEscaping
                         }
                     End Function).ToArray
     End Function
@@ -493,12 +501,12 @@ Public Module [Imports]
         End If
         Return New mysql.drug_classification With {
             .drug = drug.PrimaryID,
-            .class = c.class,
+            .class = c.class.MySqlEscaping,
             .description = MySqlEscaping(c.description),
-            .direct_parent = c.directParent,
-            .kingdom = c.kingdom,
-            .subclass = c.subclass,
-            .superclass = c.superclass
+            .direct_parent = c.directParent.MySqlEscaping,
+            .kingdom = c.kingdom.MySqlEscaping,
+            .subclass = c.subclass.MySqlEscaping,
+            .superclass = c.superclass.MySqlEscaping
         }
     End Function
 
@@ -509,9 +517,9 @@ Public Module [Imports]
             .Select(Function(i)
                         Return New mysql.drug_interactions With {
                             .drug = drug.PrimaryID,
-                            .partner = i.drugbankID,
+                            .partner = i.drugbankID.MySqlEscaping,
                             .partner_description = MySqlEscaping(i.description),
-                            .partner_name = i.name
+                            .partner_name = i.name.MySqlEscaping
                         }
                     End Function).ToArray
     End Function
@@ -522,10 +530,10 @@ Public Module [Imports]
             .SafeQuery _
             .Select(Function(c)
                         Return New mysql.drug_calculated_properties With {
-                            .drug = drug.PrimaryID,
-                            .kind = c.kind,
-                            .source = c.source,
-                            .value = c.value
+                            .drug = drug.PrimaryID.MySqlEscaping,
+                            .kind = c.kind.MySqlEscaping,
+                            .source = c.source.MySqlEscaping,
+                            .value = c.value.MySqlEscaping
                         }
                     End Function).ToArray
     End Function

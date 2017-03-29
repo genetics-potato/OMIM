@@ -10,7 +10,7 @@ Namespace XML
         Public Property name As String
         Public Property category As String
         Public Property drugs As PathwayDrug
-        Public Property enzymes As enzyme()
+        Public Property enzymes As pathwayEnzyme
 
         Public Class PathwayDrug
             <XmlElement("drug")>
