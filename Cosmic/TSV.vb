@@ -2,6 +2,7 @@
 Imports System.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Scripting
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
@@ -20,7 +21,7 @@ Public Module TSV
     ''' <typeparam name="T"></typeparam>
     ''' <param name="tsv$"></param>
     ''' <param name="save$"></param>
-    Public Sub Dump(Of T As SQLTable)(tsv$, Optional save$ = Nothing)
+    Public Sub Dump(Of T As SQLTable)(tsv$, Optional save$ = Nothing, Optional block_size% = 1024)
         If save.StringEmpty Then
             save = tsv.TrimSuffix & ".sql"
         End If
@@ -35,10 +36,11 @@ Public Module TSV
                     .Name = o.FieldName.ToLower,
                     .Value = o.PropertyInfo
                 }).ToArray
+            Dim tmp As New List(Of T)
 
             Do While Not reader.EndOfStream
                 Dim o As Object = Activator.CreateInstance(type)
-                Dim row As SQLTable = DirectCast(o, SQLTable)
+                Dim row As T = DirectCast(o, T)
                 Dim data$() = reader.ReadLine.Split(ASCII.TAB)
 
                 For Each field As NamedValue(Of PropertyInfo) In propWrites
@@ -55,8 +57,18 @@ Public Module TSV
                     End Try
                 Next
 
-                Call sql.WriteLine(row.GetInsertSQL)
+                If tmp.Count <= block_size Then
+                    tmp += row
+                Else
+                    Call sql.WriteLine(tmp.DumpTransaction)
+                    Call tmp.Clear()
+                End If
             Loop
+
+            If tmp.Count > 0 Then
+                Call sql.WriteLine(tmp.DumpTransaction)
+                Call tmp.Clear()
+            End If
         End Using
     End Sub
 End Module
