@@ -4,6 +4,7 @@ Imports Microsoft.VisualBasic.Serialization.JSON
 Namespace XML
 
     Public Class target
+
         Public Property id As String
         Public Property name As String
         Public Property organism As String
@@ -13,9 +14,13 @@ Namespace XML
         Public Property knownAction As String
         Public Property polypeptide As polypeptide
 
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 
     Public Class polypeptide
+
         <XmlAttribute> Public Property id As String
         <XmlAttribute> Public Property source As String
         Public Property name As String
@@ -45,24 +50,47 @@ Namespace XML
     End Class
 
     Public Class organism
+
         <XmlAttribute("ncbi-taxonomy-id")>
         Public Property NCBItaxonomyID As String
         <XmlText>
         Public Property name As String
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 
     <XmlType("go-classifier")>
     Public Class goClassifier
+
+        ''' <summary>
+        ''' 这里是用的是命名空间的简写
+        ''' </summary>
+        ''' <returns></returns>
         Public Property category As String
         Public Property description As String
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 
     Public Class pfam
+
         Public Property identifier As String
         Public Property name As String
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 
     Public Class action
         Public Property action As String
+
+        Public Overrides Function ToString() As String
+            Return action
+        End Function
     End Class
 End Namespace

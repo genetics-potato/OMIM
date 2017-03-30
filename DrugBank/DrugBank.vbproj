@@ -120,11 +120,11 @@
     <Compile Include="mysql\polypeptide_synonyms.vb" />
     <Compile Include="mysql\reference.vb" />
     <Compile Include="mysql\target_polypeptides.vb" />
-    <Compile Include="XML\reactions.vb" />
-    <Compile Include="XML\pathway.vb" />
+    <Compile Include="XML\Reactions.vb" />
+    <Compile Include="XML\Pathway.vb" />
     <Compile Include="XML\Reference.vb" />
-    <Compile Include="XML\target.vb" />
-    <Compile Include="XML\objects.vb" />
+    <Compile Include="XML\Target.vb" />
+    <Compile Include="XML\DrugInformation.vb" />
     <Compile Include="XML\Drug.vb" />
     <Compile Include="XML\Database.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
