@@ -4,7 +4,7 @@
 
 
 
-        Call SMRUCC.Clinic.Data.Cosmic.Dump(Of SMRUCC.Clinic.Data.Cosmic.mysql.gene_expression)("G:\2017-3-7-KEGG\cosmic\CosmicCompleteGeneExpression.out.txt")
+        Call SMRUCC.Clinic.Data.Cosmic.DumpFromDirectory("G:\2017-3-7-KEGG\cosmic\", "x:\")
         Pause()
         Dim db = SMRUCC.Clinic.Data.DrugBank.XML.Database.Load("G:\2017-3-7-KEGG\full database.xml")
 

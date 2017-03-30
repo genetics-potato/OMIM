@@ -22,6 +22,15 @@ Public Module TSV
     ''' <param name="tsv$"></param>
     ''' <param name="save$"></param>
     Public Sub Dump(Of T As SQLTable)(tsv$, Optional save$ = Nothing, Optional block_size% = 1024)
+        Dim type As Type = GetType(T)
+        Dim schema As New Table(type)
+        Dim propWrites As NamedValue(Of PropertyInfo)() =
+            schema.Fields _
+            .Select(Function(o) New NamedValue(Of PropertyInfo) With {
+                .Name = CodeGenerator.FixInvalids(o.FieldName).ToLower,
+                .Value = o.PropertyInfo
+            }).ToArray
+
         If save.StringEmpty Then
             save = tsv.TrimSuffix & ".sql"
         End If
@@ -30,16 +39,19 @@ Public Module TSV
         End If
 
         Using reader As StreamReader = tsv.OpenReader(), sql As StreamWriter = save.OpenWriter
-            Dim index As New IndexOf(Of String)(reader.ReadLine.ToLower.Split(ASCII.TAB).Select(AddressOf CodeGenerator.FixInvalids))
-            Dim type As Type = GetType(T)
-            Dim schema As New Table(type)
-            Dim propWrites As NamedValue(Of PropertyInfo)() =
-                schema.Fields _
-                .Select(Function(o) New NamedValue(Of PropertyInfo) With {
-                    .Name = CodeGenerator.FixInvalids(o.FieldName).ToLower,
-                    .Value = o.PropertyInfo
-                }).ToArray
             Dim tmp As New List(Of T)
+            Dim index As IndexOf(Of String) = reader.GetTsvHeader(
+                lower:=True,
+                process:=AddressOf CodeGenerator.FixInvalids)
+
+            ' check for schema
+            For Each field As NamedValue(Of PropertyInfo) In propWrites
+                If index(field.Name) = -1 Then
+                    Throw New Exception($"{schema.TableName}({tsv.FileName}): Not {field.Name} In {index.ToString}")
+                End If
+            Next
+
+            Call $"{tsv} --> {save}".__DEBUG_ECHO
 
             Do While Not reader.EndOfStream
                 Dim o As Object = Activator.CreateInstance(type)
