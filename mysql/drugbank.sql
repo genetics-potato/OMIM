@@ -51,9 +51,7 @@ CREATE TABLE `drug` (
   `fdaLabel` varchar(45) DEFAULT NULL,
   `msds` varchar(45) DEFAULT NULL,
   `references` varchar(45) DEFAULT NULL,
-  `pdb_entry` varchar(45) DEFAULT NULL COMMENT 'pdb database entry list, using ; character as delimiter',
-  PRIMARY KEY (`primaryID`),
-  UNIQUE KEY `primaryID_UNIQUE` (`primaryID`)
+  `pdb_entry` varchar(45) DEFAULT NULL COMMENT 'pdb database entry list, using ; character as delimiter'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -76,8 +74,7 @@ CREATE TABLE `drug_atc_code` (
   `level4_code` varchar(45) DEFAULT NULL,
   `level4_description` varchar(45) DEFAULT NULL,
   `level5_code` varchar(45) DEFAULT NULL,
-  `level5_description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `level5_description` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -92,8 +89,7 @@ CREATE TABLE `drug_calculated_properties` (
   `drug` varchar(45) NOT NULL,
   `kind` varchar(45) DEFAULT NULL,
   `value` varchar(45) DEFAULT NULL,
-  `source` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `source` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -107,8 +103,7 @@ DROP TABLE IF EXISTS `drug_category`;
 CREATE TABLE `drug_category` (
   `drug` varchar(45) NOT NULL,
   `category` varchar(45) DEFAULT NULL,
-  `mesh_id` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `mesh_id` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -126,8 +121,7 @@ CREATE TABLE `drug_classification` (
   `kingdom` varchar(45) DEFAULT NULL,
   `superclass` varchar(45) DEFAULT NULL,
   `class` varchar(45) DEFAULT NULL,
-  `subclass` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `subclass` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,8 +136,7 @@ CREATE TABLE `drug_dosage` (
   `drug` varchar(45) NOT NULL,
   `form` varchar(45) DEFAULT NULL,
   `route` varchar(45) DEFAULT NULL,
-  `strength` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `strength` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,8 +151,7 @@ CREATE TABLE `drug_experimental_properties` (
   `drug` varchar(45) NOT NULL,
   `kind` varchar(45) DEFAULT NULL,
   `value` varchar(45) DEFAULT NULL,
-  `source` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `source` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -173,8 +165,7 @@ DROP TABLE IF EXISTS `drug_external_identifiers`;
 CREATE TABLE `drug_external_identifiers` (
   `drug` varchar(45) NOT NULL,
   `resource` varchar(45) DEFAULT NULL,
-  `ID` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `ID` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -188,8 +179,7 @@ DROP TABLE IF EXISTS `drug_external_links`;
 CREATE TABLE `drug_external_links` (
   `drug` varchar(45) NOT NULL,
   `resource` varchar(45) DEFAULT NULL,
-  `url` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `url` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -204,8 +194,7 @@ CREATE TABLE `drug_interactions` (
   `drug` varchar(45) NOT NULL,
   `partner` varchar(45) DEFAULT NULL,
   `partner_name` varchar(45) DEFAULT NULL,
-  `partner_description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `partner_description` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,8 +209,7 @@ CREATE TABLE `drug_manufacturers` (
   `drug` varchar(45) NOT NULL,
   `generic` varchar(45) DEFAULT NULL,
   `url` varchar(45) DEFAULT NULL,
-  `manufacturer` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `manufacturer` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -235,8 +223,7 @@ DROP TABLE IF EXISTS `drug_mixtures`;
 CREATE TABLE `drug_mixtures` (
   `drug` varchar(45) NOT NULL,
   `mixture_name` varchar(45) DEFAULT NULL,
-  `ingredients` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `ingredients` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -250,8 +237,7 @@ DROP TABLE IF EXISTS `drug_packagers`;
 CREATE TABLE `drug_packagers` (
   `drug` varchar(45) NOT NULL,
   `packager_name` varchar(45) DEFAULT NULL,
-  `url` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `url` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -268,8 +254,7 @@ CREATE TABLE `drug_patents` (
   `country` varchar(45) DEFAULT NULL,
   `approved` varchar(45) DEFAULT NULL,
   `expires` varchar(45) DEFAULT NULL,
-  `pediatric_extension` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `pediatric_extension` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -285,8 +270,7 @@ CREATE TABLE `drug_pathways` (
   `smpdb_id` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `category` varchar(45) DEFAULT NULL,
-  `enzymes` varchar(45) DEFAULT NULL COMMENT 'using ; character as delimiter',
-  PRIMARY KEY (`drug`)
+  `enzymes` varchar(45) DEFAULT NULL COMMENT 'using ; character as delimiter'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -302,8 +286,7 @@ CREATE TABLE `drug_price` (
   `description` varchar(45) DEFAULT NULL,
   `cost` varchar(45) DEFAULT NULL,
   `unit` varchar(45) DEFAULT NULL,
-  `currency` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `currency` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -331,8 +314,7 @@ CREATE TABLE `drug_products` (
   `over_the_counter` varchar(45) DEFAULT NULL,
   `approved` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
-  `source` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `source` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -356,8 +338,7 @@ CREATE TABLE `drug_reactions` (
   `right3` varchar(45) DEFAULT NULL,
   `right4` varchar(45) DEFAULT NULL,
   `right5` varchar(45) DEFAULT NULL,
-  `enzymes` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `enzymes` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -377,8 +358,7 @@ CREATE TABLE `drug_snp_effects` (
   `defining_change` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `allele` varchar(45) DEFAULT NULL,
-  `pubmed_id` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `pubmed_id` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -393,8 +373,7 @@ CREATE TABLE `drug_synonym` (
   `drug` varchar(45) NOT NULL,
   `synonym` varchar(45) DEFAULT NULL,
   `language` varchar(45) DEFAULT NULL,
-  `coder` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `coder` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -412,8 +391,7 @@ CREATE TABLE `drug_targets` (
   `organism` varchar(45) DEFAULT NULL,
   `actions` varchar(45) DEFAULT NULL,
   `known_action` varchar(45) DEFAULT NULL,
-  `polypeptide` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`drug`)
+  `polypeptide` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -427,8 +405,7 @@ DROP TABLE IF EXISTS `pathway_drugs`;
 CREATE TABLE `pathway_drugs` (
   `pathway_smpdb_id` varchar(45) NOT NULL,
   `drug` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`pathway_smpdb_id`)
+  `name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -444,8 +421,7 @@ CREATE TABLE `pathway_enzymes` (
   `pathway_smpdb_id` varchar(45) NOT NULL,
   `drugID` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
-  `enzyme_drugbankID` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`uniprotID`,`pathway_smpdb_id`)
+  `enzyme_drugbankID` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -459,8 +435,7 @@ DROP TABLE IF EXISTS `polypeptide_external_ids`;
 CREATE TABLE `polypeptide_external_ids` (
   `polypeptide` varchar(45) NOT NULL,
   `resource` varchar(45) DEFAULT NULL,
-  `id` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`polypeptide`)
+  `id` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -478,8 +453,7 @@ CREATE TABLE `polypeptide_sequences` (
   `pfam` varchar(45) DEFAULT NULL COMMENT 'pfam ID list, using ; character as the delimiter',
   `go_bp` varchar(45) DEFAULT NULL,
   `go_cc` varchar(45) DEFAULT NULL,
-  `go_mf` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`polypeptide`)
+  `go_mf` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='polypeptide sequence data and function annotations';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -501,8 +475,7 @@ CREATE TABLE `polypeptide_synonyms` (
   `synonym7` varchar(45) DEFAULT NULL,
   `synonym8` varchar(45) DEFAULT NULL,
   `synonym9` varchar(45) DEFAULT NULL,
-  `synonym10` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`polypeptide`)
+  `synonym10` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -516,8 +489,7 @@ DROP TABLE IF EXISTS `reference`;
 CREATE TABLE `reference` (
   `type` varchar(45) NOT NULL COMMENT '1. article\n2. textbook\n3. link',
   `id` varchar(45) DEFAULT NULL COMMENT 'article -> pubmedID\ntextbook -> isbn\nlink -> url',
-  `title` varchar(45) DEFAULT NULL COMMENT 'article, textbook -> citation\nlink -> title',
-  PRIMARY KEY (`type`)
+  `title` varchar(45) DEFAULT NULL COMMENT 'article, textbook -> citation\nlink -> title'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -545,8 +517,7 @@ CREATE TABLE `target_polypeptides` (
   `molecular_weight` varchar(45) DEFAULT NULL,
   `chromosome_location` varchar(45) DEFAULT NULL,
   `organism` varchar(45) DEFAULT NULL,
-  `organism_ncbi_taxonomy_id` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`target_id`)
+  `organism_ncbi_taxonomy_id` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -567,4 +538,4 @@ CREATE TABLE `target_polypeptides` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-29 15:24:51
+-- Dump completed on 2017-03-30 17:09:02

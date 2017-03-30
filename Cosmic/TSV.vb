@@ -2,6 +2,7 @@
 Imports System.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Scripting
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.VisualBasic.Text
@@ -20,9 +21,12 @@ Public Module TSV
     ''' <typeparam name="T"></typeparam>
     ''' <param name="tsv$"></param>
     ''' <param name="save$"></param>
-    Public Sub Dump(Of T As SQLTable)(tsv$, Optional save$ = Nothing)
+    Public Sub Dump(Of T As SQLTable)(tsv$, Optional save$ = Nothing, Optional block_size% = 1024)
         If save.StringEmpty Then
             save = tsv.TrimSuffix & ".sql"
+        End If
+        If Not save.Split("."c).Last.TextEquals("sql") Then
+            save = save & "/" & GetType(T).Name & ".sql"
         End If
 
         Using reader As StreamReader = tsv.OpenReader(), sql As StreamWriter = save.OpenWriter
@@ -32,13 +36,14 @@ Public Module TSV
             Dim propWrites As NamedValue(Of PropertyInfo)() =
                 schema.Fields _
                 .Select(Function(o) New NamedValue(Of PropertyInfo) With {
-                    .Name = o.FieldName.ToLower,
+                    .Name = CodeGenerator.FixInvalids(o.FieldName).ToLower,
                     .Value = o.PropertyInfo
                 }).ToArray
+            Dim tmp As New List(Of T)
 
             Do While Not reader.EndOfStream
                 Dim o As Object = Activator.CreateInstance(type)
-                Dim row As SQLTable = DirectCast(o, SQLTable)
+                Dim row As T = DirectCast(o, T)
                 Dim data$() = reader.ReadLine.Split(ASCII.TAB)
 
                 For Each field As NamedValue(Of PropertyInfo) In propWrites
@@ -55,8 +60,42 @@ Public Module TSV
                     End Try
                 Next
 
-                Call sql.WriteLine(row.GetInsertSQL)
+                If tmp.Count <= block_size Then
+                    tmp += row
+                Else
+                    Call sql.WriteLine(tmp.DumpTransaction)
+                    Call tmp.Clear()
+                End If
             Loop
+
+            If tmp.Count > 0 Then
+                Call sql.WriteLine(tmp.DumpTransaction)
+                Call tmp.Clear()
+            End If
         End Using
+    End Sub
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="DIR$"></param>
+    ''' <param name="save$">The export directory</param>
+    Public Sub DumpFromDirectory(DIR$, save$)
+        Call TSV.Dump(Of mysql.cosmic_genome_screens_mutant_export)(DIR & "\CosmicGenomeScreensMutantExport.tsv", save)
+        Call TSV.Dump(Of mysql.hgnc)(DIR & "\CosmicHGNC.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_mutant_export)(DIR & "\CosmicMutantExport.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_mutant_export_census)(DIR & "\CosmicMutantExportCensus.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_ncv)(DIR & "\CosmicNCV.tsv", save)
+        Call TSV.Dump(Of mysql.resistance_mutations)(DIR & "\CosmicResistanceMutations.tsv", save)
+        Call TSV.Dump(Of mysql.sample_features)(DIR & "\CosmicSample.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_struct_export)(DIR & "\CosmicStructExport.tsv", save)
+        Call TSV.Dump(Of mysql.transcripts)(DIR & "\CosmicTranscripts.tsv", save)
+        Call TSV.Dump(Of mysql.ascat_acf_ploidy)(DIR & "\ascat_acf_ploidy.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_breakpoints_export)(DIR & "\CosmicBreakpointsExport.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_complete_cna)(DIR & "\CosmicCompleteCNA.tsv", save)
+        Call TSV.Dump(Of mysql.complete_differential_methylation)(DIR & "\CosmicCompleteDifferentialMethylation.tsv", save)
+        Call TSV.Dump(Of mysql.gene_expression)(DIR & "\CosmicCompleteGeneExpression.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_complete_targeted_screens_mutant_export)(DIR & "\CosmicCompleteTargetedScreensMutantExport.tsv", save)
+        Call TSV.Dump(Of mysql.cosmic_fusion_export)(DIR & "\CosmicFusionExport.tsv", save)
     End Sub
 End Module
