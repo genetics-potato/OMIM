@@ -61,7 +61,15 @@ Public Module TSV
                 For Each field As NamedValue(Of PropertyInfo) In propWrites
                     Try
                         Dim s$ = data(index(field.Name))
-                        Dim v As Object = InputHandler.CTypeDynamic(s, field.Value.PropertyType)
+                        Dim v As Object
+
+                        If field.Value.PropertyType Is GetType(String) Then
+                            s = MySqlEscaping(s)
+                            v = s
+                        Else
+                            v = InputHandler.CTypeDynamic(s, field.Value.PropertyType)
+                        End If
+
                         Call field.Value.SetValue(o, value:=v)
                     Catch ex As Exception
                         ex = New Exception(data.GetJson, ex)
@@ -76,6 +84,7 @@ Public Module TSV
                     tmp += row
                 Else
                     Call sql.WriteLine(tmp.DumpTransaction)
+                    Call sql.Flush()
                     Call tmp.Clear()
                 End If
             Loop
