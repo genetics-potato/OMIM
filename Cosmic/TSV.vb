@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Reflection
+Imports System.Text
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Language
@@ -38,7 +39,9 @@ Public Module TSV
             save = save & "/" & GetType(T).Name & ".sql"
         End If
 
-        Using reader As StreamReader = tsv.OpenReader(), sql As StreamWriter = save.OpenWriter
+        Call $"Open cosmic tsv table: {tsv.ToFileURL}, length={tsv.FileLength}bytes".__INFO_ECHO
+
+        Using reader As StreamReader = tsv.OpenReader(Encoding.ASCII), sql As StreamWriter = save.OpenWriter
             Dim tmp As New List(Of T)
             Dim index As IndexOf(Of String) = reader.GetTsvHeader(
                 lower:=True,
