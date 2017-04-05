@@ -3,6 +3,7 @@ Imports System.Reflection
 Imports System.Text
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Data.csv
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Scripting
 Imports Microsoft.VisualBasic.Serialization.JSON
@@ -123,5 +124,16 @@ Public Module TSV
         Call TSV.Dump(Of mysql.gene_expression)(DIR & "\CosmicCompleteGeneExpression.tsv", save)
         Call TSV.Dump(Of mysql.cosmic_complete_targeted_screens_mutant_export)(DIR & "\CosmicCompleteTargetedScreensMutantExport.tsv", save)
         Call TSV.Dump(Of mysql.cosmic_fusion_export)(DIR & "\CosmicFusionExport.tsv", save)
+    End Sub
+
+    Public Sub DumpCsvFiles(DIR$, save$)
+        Dim path As New Value(Of String)
+
+        ' 剩余两个csv文件
+        Call MappingsHelper.CheckFieldConsistent(Of mysql.classification)(path = $"{DIR}/classification.csv").__DEBUG_ECHO
+        Call (+path).LoadCsv(Of mysql.classification).DumpTransaction(save)
+
+        Call MappingsHelper.CheckFieldConsistent(Of mysql.cancer_gene_census)(path = $"{DIR}/cancer_gene_census.csv").__DEBUG_ECHO
+        Call (+path).LoadCsv(Of mysql.cancer_gene_census).DumpTransaction(save)
     End Sub
 End Module

@@ -16,4 +16,13 @@ Module Program
         Call Cosmic.DumpFromDirectory([in], save:=out)
         Return 0
     End Function
+
+    <ExportAPI("/Imports.Cosmic.Csv",
+               Usage:="/Imports.Cosmic.Csv /in <cosmic.DIR> /out <mysql.DIR>")>
+    Public Function ImportsCosmicCsv(args As CommandLine) As Integer
+        Dim in$ = args <= "/in"
+        Dim out As String = args.GetValue("/out", [in].TrimDIR & ".mysql_Dumps/")
+        Call Cosmic.DumpCsvFiles([in], out)
+        Return 0
+    End Function
 End Module
