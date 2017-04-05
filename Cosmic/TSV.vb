@@ -130,10 +130,60 @@ Public Module TSV
         Dim path As New Value(Of String)
 
         ' 剩余两个csv文件
+        Call "Check Consistent:".__INFO_ECHO
         Call MappingsHelper.CheckFieldConsistent(Of mysql.classification)(path = $"{DIR}/classification.csv").__DEBUG_ECHO
-        Call (+path).LoadCsv(Of mysql.classification).DumpTransaction(save)
+        Call (+path).LoadCsv(Of mysql.classification).Select(AddressOf Escaping).DumpTransaction(save)
 
+        Call "Check Consistent:".__INFO_ECHO
         Call MappingsHelper.CheckFieldConsistent(Of mysql.cancer_gene_census)(path = $"{DIR}/cancer_gene_census.csv").__DEBUG_ECHO
-        Call (+path).LoadCsv(Of mysql.cancer_gene_census).DumpTransaction(save)
+        Call (+path).LoadCsv(Of mysql.cancer_gene_census).Select(AddressOf Escaping).DumpTransaction(save)
     End Sub
+
+    Private Function Escaping(data As mysql.classification) As mysql.classification
+        With data
+            .Histology = .Histology.MySqlEscaping
+            .Histology_COSMIC = .Histology_COSMIC.MySqlEscaping
+            .Hist_Subtype1 = .Hist_Subtype1.MySqlEscaping
+            .Hist_Subtype1_COSMIC = .Hist_Subtype1_COSMIC.MySqlEscaping
+            .Hist_Subtype2 = .Hist_Subtype2.MySqlEscaping
+            .Hist_Subtype2_COSMIC = .Hist_Subtype2_COSMIC.MySqlEscaping
+            .Hist_Subtype3 = .Hist_Subtype3.MySqlEscaping
+            .Hist_Subtype3_COSMIC = .Hist_Subtype3_COSMIC.MySqlEscaping
+            .Site_Primary = .Site_Primary.MySqlEscaping
+            .Site_Primary_COSMIC = .Site_Primary_COSMIC.MySqlEscaping
+            .Site_Subtype1 = .Site_Subtype1.MySqlEscaping
+            .Site_Subtype1_COSMIC = .Site_Subtype1_COSMIC.MySqlEscaping
+            .Site_Subtype2 = .Site_Subtype2.MySqlEscaping
+            .Site_Subtype2_COSMIC = .Site_Subtype2_COSMIC.MySqlEscaping
+            .Site_Subtype3 = .Site_Subtype3.MySqlEscaping
+            .Site_Subtype3_COSMIC = .Site_Subtype3_COSMIC.MySqlEscaping
+        End With
+
+        Return data
+    End Function
+
+    Private Function Escaping(data As mysql.cancer_gene_census) As mysql.cancer_gene_census
+        With data
+            .Cancer_Syndrome = .Cancer_Syndrome.MySqlEscaping
+            .Chr_Band = .Chr_Band.MySqlEscaping
+            .Entrez_GeneId = .Entrez_GeneId.MySqlEscaping
+            .Gene_Symbol = .Gene_Symbol.MySqlEscaping
+            .Genome_Location = .Genome_Location.MySqlEscaping
+            .Germline = .Germline.MySqlEscaping
+            .Molecular_Genetics = .Molecular_Genetics.MySqlEscaping
+            .Mutation_Types = .Mutation_Types.MySqlEscaping
+            .Name = .Name.MySqlEscaping
+            .Other_Germline_Mut = .Other_Germline_Mut.MySqlEscaping
+            .Other_Syndrome = .Other_Syndrome.MySqlEscaping
+            .Role_in_Cancer = .Role_in_Cancer.MySqlEscaping
+            .Somatic = .Somatic.MySqlEscaping
+            .Synonyms = .Synonyms.MySqlEscaping
+            .Tissue_Type = .Tissue_Type.MySqlEscaping
+            .Translocation_Partner = .Translocation_Partner.MySqlEscaping
+            .Tumour_Types_Germline_ = .Tumour_Types_Germline_.MySqlEscaping
+            .Tumour_Types_Somatic_ = .Tumour_Types_Somatic_.MySqlEscaping
+        End With
+
+        Return data
+    End Function
 End Module
