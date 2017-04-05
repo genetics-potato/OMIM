@@ -60,11 +60,12 @@ Public Module TSV
                 Dim o As Object = Activator.CreateInstance(type)
                 Dim row As T = DirectCast(o, T)
                 Dim data$() = reader.ReadLine.Split(ASCII.TAB)
+                Dim s$ = Nothing
+                Dim v As Object
 
                 For Each field As NamedValue(Of PropertyInfo) In propWrites
                     Try
-                        Dim s$ = data(index(field.Name))
-                        Dim v As Object
+                        s = data(index(field.Name))
 
                         If field.Value.PropertyType Is GetType(String) Then
                             s = MySqlEscaping(s)
@@ -76,6 +77,7 @@ Public Module TSV
                         Call field.Value.SetValue(o, value:=v)
                     Catch ex As Exception
                         ex = New Exception(data.GetJson, ex)
+                        ex = New Exception("fieldName is " & field.Name & ", and value is " & s, ex)
                         Call App.LogException(ex)
                         Call ex.PrintException
 

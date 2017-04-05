@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `cosmic` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `cosmic`;
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: cosmic
 -- ------------------------------------------------------
--- Server version	5.7.12-log
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `ascat_acf_ploidy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ascat_acf_ploidy` (
-  `Cancer_Type_Code` int(11) NOT NULL COMMENT 'The disease code (decode available from https://tcga-data.nci.nih.gov/datareports/codeTablesReport.htm).',
+  `Cancer_Type_Code` varchar(45) NOT NULL COMMENT 'The disease code (decode available from https://tcga-data.nci.nih.gov/datareports/codeTablesReport.htm).',
   `Sample` varchar(45) DEFAULT NULL COMMENT 'The name of the sample.',
   `Aberrant_Cell_Fraction(Purity)` varchar(45) DEFAULT NULL COMMENT 'The aberrant cell fraction (purity estimate).',
   `Ploidy` varchar(45) DEFAULT NULL COMMENT 'The ploidy of the genome.',
@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS `cancer_gene_census`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cancer_gene_census` (
-  `Gene Symbol` int(11) NOT NULL,
+  `Gene Symbol` varchar(45) NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
   `Entrez GeneId` varchar(45) DEFAULT NULL,
   `Genome Location` varchar(45) DEFAULT NULL,
@@ -71,7 +71,7 @@ DROP TABLE IF EXISTS `classification`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `classification` (
-  `Site_Primary` int(11) NOT NULL COMMENT 'Primary tissue specified in the publication.',
+  `Site_Primary` varchar(45) NOT NULL COMMENT 'Primary tissue specified in the publication.',
   `Site_Subtype1` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in the publication.',
   `Site_Subtype2` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in the publication.',
   `Site_Subtype3` varchar(45) DEFAULT NULL COMMENT 'Sub tissue specified in the publication.',
@@ -99,7 +99,7 @@ DROP TABLE IF EXISTS `complete_differential_methylation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `complete_differential_methylation` (
-  `Study_ID` int(11) NOT NULL COMMENT 'The study Id for these data.',
+  `Study_ID` varchar(45) NOT NULL COMMENT 'The study Id for these data.',
   `Id_Sample` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the TCGA.',
   `Sample_name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the TCGA.',
   `Id_tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the TCGA.',
@@ -132,7 +132,7 @@ DROP TABLE IF EXISTS `cosmic_breakpoints_export`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_breakpoints_export` (
-  `Sample name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample name` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
   `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
   `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
@@ -168,7 +168,7 @@ DROP TABLE IF EXISTS `cosmic_complete_cna`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_complete_cna` (
-  `CNV_ID` int(11) NOT NULL COMMENT 'The unique identifier for the variant (not stable, differs between releases).',
+  `CNV_ID` varchar(45) NOT NULL COMMENT 'The unique identifier for the variant (not stable, differs between releases).',
   `Id gene` varchar(45) DEFAULT NULL COMMENT 'The ID and symbol of the gene which overlaps the copy number segment (or ''-'' where there is no overlapping gene).',
   `Gene name` varchar(45) DEFAULT NULL COMMENT 'The ID and symbol of the gene which overlaps the copy number segment (or ''-'' where there is no overlapping gene).',
   `Id Sample` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
@@ -200,7 +200,7 @@ DROP TABLE IF EXISTS `cosmic_complete_targeted_screens_mutant_export`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_complete_targeted_screens_mutant_export` (
-  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC symbol.',
+  `Gene name` varchar(45) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC symbol.',
   `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
   `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
   `HGNC id` varchar(45) DEFAULT NULL COMMENT 'Unique HGNC identifier, if the gene is in HGNC.',
@@ -247,7 +247,7 @@ DROP TABLE IF EXISTS `cosmic_fusion_export`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_fusion_export` (
-  `Sample Id` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample Id` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Sample name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
   `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
@@ -274,7 +274,7 @@ DROP TABLE IF EXISTS `cosmic_genome_screens_mutant_export`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_genome_screens_mutant_export` (
-  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
+  `Gene name` varchar(45) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
   `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
   `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
   `HGNC id` varchar(45) DEFAULT NULL COMMENT 'Unique HGNC identifier, if the gene is in HGNC.',
@@ -320,7 +320,7 @@ DROP TABLE IF EXISTS `cosmic_mutant_export`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_mutant_export` (
-  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
+  `Gene name` varchar(45) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
   `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
   `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
   `HGNC id` varchar(45) DEFAULT NULL COMMENT 'if gene is in HGNC, this id helps linking it to HGNC.',
@@ -367,7 +367,7 @@ DROP TABLE IF EXISTS `cosmic_mutant_export_census`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_mutant_export_census` (
-  `Gene name` int(11) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
+  `Gene name` varchar(45) NOT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
   `Accession Number` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier of the gene.',
   `Gene CDS length` varchar(45) DEFAULT NULL COMMENT 'Length of the gene (base pair) counts.',
   `HGNC id` varchar(45) DEFAULT NULL COMMENT 'if gene is in HGNC, this id helps linking it to HGNC.',
@@ -414,7 +414,7 @@ DROP TABLE IF EXISTS `cosmic_ncv`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_ncv` (
-  `Sample name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample name` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Id Sample` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Id NCV` varchar(45) DEFAULT NULL COMMENT 'unique non-coding variant identifier.',
   `Zygosity` varchar(45) DEFAULT NULL COMMENT 'Information on whether the mutation was reported to be homozygous , heterozygous or unknown within the sample.',
@@ -444,7 +444,7 @@ DROP TABLE IF EXISTS `cosmic_struct_export`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cosmic_struct_export` (
-  `Sample name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual.',
+  `Sample name` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual.',
   `Primary Site` varchar(45) DEFAULT NULL COMMENT 'The primary tissue/cancer from which the sample originated. More details on the tissue classification are avaliable from here. In COSMIC we have standard classification system for tissue types and sub types because they vary a lot between different papers.',
   `Site Subtype 1` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 1) of the samples tissue of origin.',
   `Site Subtype 2` varchar(45) DEFAULT NULL COMMENT 'Further sub classification (level 2) of the samples tissue of origin.',
@@ -471,7 +471,7 @@ DROP TABLE IF EXISTS `gene_expression`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gene_expression` (
-  `sample_ID` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
+  `sample_ID` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
   `sample_name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
   `gene_name` varchar(45) DEFAULT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
   `regulation` varchar(45) DEFAULT NULL COMMENT 'it could be over or under depending on the scores from different platforms if they are above or below the threshold.',
@@ -489,7 +489,7 @@ DROP TABLE IF EXISTS `hgnc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hgnc` (
-  `cosmic_ID` int(11) NOT NULL COMMENT 'COSMIC Gene ID (COSG*).',
+  `cosmic_ID` varchar(45) NOT NULL COMMENT 'COSMIC Gene ID (COSG*).',
   `cosmic_gene_name` varchar(45) DEFAULT NULL COMMENT 'Gene name used in COSMIC.',
   `entrez_ID` varchar(45) DEFAULT NULL COMMENT 'Entrez ID mapping.',
   `HGNC_ID` varchar(45) DEFAULT NULL COMMENT 'HGNC mapping.',
@@ -508,7 +508,7 @@ DROP TABLE IF EXISTS `resistance_mutations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `resistance_mutations` (
-  `Sample_name` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
+  `Sample_name` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Sample_id` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers.',
   `Gene_Name` varchar(45) DEFAULT NULL COMMENT 'The gene name for which the data has been curated in COSMIC. In most cases this is the accepted HGNC identifier.',
   `Transcript` varchar(45) DEFAULT NULL COMMENT 'The transcript identifier (accession number) of the gene.',
@@ -541,7 +541,7 @@ DROP TABLE IF EXISTS `sample_features`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sample_features` (
-  `Sample_id` int(11) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
+  `Sample_id` varchar(45) NOT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
   `Sample_name` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
   `Id_tumour` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
   `Id_Ind` varchar(45) DEFAULT NULL COMMENT 'A sample is an instance of a portion of a tumour being examined for mutations. The sample name can be derived from a number of sources. In many cases it originates from the cell line name. Other sources include names assigned by the annotators, or an incremented number assigned during an anonymisation process. A number of samples can be taken from a single tumour and a number of tumours can be obtained from one individual. A sample id is used to identify a sample within the COSMIC database. There can be multiple ids, if the same sample has been entered into the database multiple times from different papers. These samples are from the ICGC and TCGA.',
@@ -591,7 +591,7 @@ DROP TABLE IF EXISTS `transcripts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transcripts` (
-  `Gene_ID` int(11) NOT NULL COMMENT 'The unique ID of the gene.',
+  `Gene_ID` varchar(45) NOT NULL COMMENT 'The unique ID of the gene.',
   `gene_name` varchar(45) DEFAULT NULL COMMENT 'The name of the gene.',
   `transcript_ID` varchar(45) DEFAULT NULL COMMENT 'The accession of the transcript.',
   PRIMARY KEY (`Gene_ID`)
@@ -615,4 +615,4 @@ CREATE TABLE `transcripts` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-30 22:01:11
+-- Dump completed on 2017-04-05 11:30:32
