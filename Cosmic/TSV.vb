@@ -23,7 +23,7 @@ Public Module TSV
     ''' <typeparam name="T"></typeparam>
     ''' <param name="tsv$"></param>
     ''' <param name="save$"></param>
-    Public Sub Dump(Of T As SQLTable)(tsv$, Optional save$ = Nothing, Optional block_size% = 1024)
+    Public Sub Dump(Of T As MySQLTable)(tsv$, Optional save$ = Nothing, Optional block_size% = 1024)
         Dim type As Type = GetType(T)
         Dim schema As New Table(type)
         Dim propWrites As NamedValue(Of PropertyInfo)() =
@@ -44,7 +44,7 @@ Public Module TSV
 
         Using reader As StreamReader = tsv.OpenReader(Encoding.ASCII), sql As StreamWriter = save.OpenWriter
             Dim tmp As New List(Of T)
-            Dim index As IndexOf(Of String) = reader.GetTsvHeader(
+            Dim index As Index(Of String) = reader.GetTsvHeader(
                 lower:=True,
                 process:=AddressOf CodeGenerator.FixInvalids)
 
